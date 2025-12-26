@@ -1,1 +1,5 @@
-<a href="/">Home Page</a>
+<script lang="ts">
+    import { base } from '$app/paths';
+</script>
+
+<a href="{base}/">Home Page</a>
