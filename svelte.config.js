@@ -21,14 +21,6 @@ const config = {
             precompress: false,
             strict: true,
         }),
-        adapter: adapter({
-            fallback: '404.html', // GitHub Pages uses 404.html for SPA-like behavior
-        }),
-        paths: {
-            // Replace 'your-repo-name' with your actual repository name
-            // In development, we use an empty string
-            base: dev ? '' : '/hbo-sveltekit',
-        },
     },
 };
 
