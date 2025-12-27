@@ -1,249 +1,238 @@
-<script lang="ts">
-    // 1. REACTIVE STATE (Svelte 5 Runes)
-    let activeTab = $state<string>('General');
-    const tabs: string[] = ['General', 'Analytics', 'Settings'];
+<script>
+    import { base } from '$app/paths';
+    import { page } from '$app/stores';
 
-    // Isolated Data Objects with explicit types
-    interface GeneralData {
-        name: string;
-        preference: string;
-        confirmed: boolean;
-    }
-    interface AnalyticsData {
-        reportTitle: string;
-        views: number;
-    }
-    interface SettingsData {
-        email: string;
-        notifications: boolean;
-    }
+    // 1. URL & BREADCRUMB LOGIC
+    let entityName = $derived(
+        $page.url.searchParams.get('name') || 'GP Details'
+    );
 
-    let generalData = $state<GeneralData>({
-        name: '',
-        preference: 'low',
-        confirmed: false,
-    });
-    let analyticsData = $state<AnalyticsData>({
-        reportTitle: 'Monthly Overview',
-        views: 1200,
-    });
-    let settingsData = $state<SettingsData>({
-        email: 'user@example.com',
-        notifications: true,
+    const goBack = () => {
+        window.history.back();
+    };
+
+    // 2. TAB STATE
+    let activeTab = $state('General');
+    const tabs = ['General', 'Analytics', 'Settings'];
+
+    // 3. TAB-SPECIFIC DATA (Runes)
+    let generalInfo = $state({
+        description: 'Primary entity configuration',
+        status: 'Active',
+        tags: ['Nebula', 'Nexus'],
     });
 
-    // Flow Logic
-    let currentStep = $state<number>(1);
-    const totalSteps: number = 3;
-
-    // 2. TYPED FUNCTIONS
-    const nextStep = (): void => {
-        if (currentStep < totalSteps) currentStep++;
-    };
-
-    const prevStep = (): void => {
-        if (currentStep > 1) currentStep--;
-    };
-
-    /**
-     * FIX: Added ': string' to define the parameter type
-     * Added ': void' to define the return type
-     */
-    const handleTabChange = (tab: string): void => {
-        activeTab = tab;
-        if (tab !== 'General') currentStep = 1;
-    };
-
-    const submitGeneralFlow = (): void => {
-        console.log('Submitting General:', generalData);
-        alert('General Flow Submitted!');
-    };
+    let analyticsData = $state({
+        views: 1240,
+        conversions: 85,
+        growth: '+12%',
+    });
 </script>
 
-<div class="dashboard-container">
-    <h1>Dashboard Page</h1>
+<div class="gp-heading">
+    <button onclick={goBack} class="btn-back" aria-label="Go back">
+        <i class="ph ph-arrow-left"></i>
+    </button>
 
+    <nav class="breadcrumb">
+        <ol>
+            <li>
+                <a href="/dashboard" data-sveltekit-noscroll>Dashboard</a>
+            </li>
+            <li class="separator">/</li>
+            <li>
+                <span class="current-page">{entityName}</span>
+            </li>
+        </ol>
+    </nav>
+</div>
+
+<main class="page-content">
     <nav class="tab-bar">
         {#each tabs as tab}
             <button
-                type="button"
                 class:active={activeTab === tab}
-                onclick={() => handleTabChange(tab)}
+                onclick={() => (activeTab = tab)}
             >
                 {tab}
             </button>
         {/each}
     </nav>
 
-    <main class="content-card">
+    <div class="content-card">
         {#if activeTab === 'General'}
-            <div class="step-indicator">
-                Step {currentStep} of {totalSteps}
-                <div class="progress-bar">
-                    <div
-                        class="progress-fill"
-                        style="width: {(currentStep / totalSteps) * 100}%"
-                    ></div>
+            <section class="tab-section">
+                <h2>General Information</h2>
+                <div class="info-grid">
+                    <label>Description</label>
+                    <textarea bind:value={generalInfo.description}></textarea>
+
+                    <label>Status</label>
+                    <select bind:value={generalInfo.status}>
+                        <option>Active</option>
+                        <option>Inactive</option>
+                        <option>Pending</option>
+                    </select>
                 </div>
-            </div>
-
-            <div class="step-content">
-                {#if currentStep === 1}
-                    <section>
-                        <h2>General Setup</h2>
-                        <input
-                            type="text"
-                            bind:value={generalData.name}
-                            placeholder="Enter name..."
-                        />
-                    </section>
-                {:else if currentStep === 2}
-                    <section>
-                        <h2>Configuration</h2>
-                        <select bind:value={generalData.preference}>
-                            <option value="high">High Priority</option>
-                            <option value="low">Low Priority</option>
-                        </select>
-                    </section>
-                {:else if currentStep === 3}
-                    <section>
-                        <h2>Review</h2>
-                        <p>Name: {generalData.name}</p>
-                        <label class="checkbox-container">
-                            <input
-                                type="checkbox"
-                                bind:checked={generalData.confirmed}
-                            />
-                            Confirm details
-                        </label>
-                    </section>
-                {/if}
-            </div>
-
-            <div class="footer-actions">
-                <button
-                    type="button"
-                    disabled={currentStep === 1}
-                    onclick={prevStep}
-                >
-                    Back
-                </button>
-
-                {#if currentStep < totalSteps}
-                    <button type="button" onclick={nextStep}>Next Step</button>
-                {:else}
-                    <button
-                        type="button"
-                        class="submit-btn"
-                        disabled={!generalData.confirmed}
-                        onclick={submitGeneralFlow}
-                    >
-                        Submit Flow
-                    </button>
-                {/if}
-            </div>
+            </section>
         {:else if activeTab === 'Analytics'}
-            <div class="static-data">
-                <h2>Analytics Editor</h2>
-                <label>Report Title:</label>
-                <input type="text" bind:value={analyticsData.reportTitle} />
-                <p>Current Views: {analyticsData.views}</p>
-            </div>
+            <section class="tab-section">
+                <h2>Performance Metrics</h2>
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <span class="label">Total Views</span>
+                        <span class="value">{analyticsData.views}</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Conversions</span>
+                        <span class="value">{analyticsData.conversions}</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="label">Growth</span>
+                        <span class="value positive"
+                            >{analyticsData.growth}</span
+                        >
+                    </div>
+                </div>
+            </section>
         {:else if activeTab === 'Settings'}
-            <div class="static-data">
-                <h2>User Settings</h2>
-                <label>Email Address:</label>
-                <input type="email" bind:value={settingsData.email} />
-                <label class="checkbox-container">
-                    <input
-                        type="checkbox"
-                        bind:checked={settingsData.notifications}
-                    />
-                    Enable Notifications
-                </label>
-            </div>
+            <section class="tab-section">
+                <h2>Entity Settings</h2>
+                <p>Manage permissions and visibility for {entityName}.</p>
+                <button class="danger-btn">Archive Entity</button>
+            </section>
         {/if}
-    </main>
-</div>
+    </div>
+</main>
 
 <style>
+    /* HEADING & BREADCRUMBS */
+    .gp-heading {
+        display: flex;
+        align-items: center;
+        padding: 0 24px;
+        background: #ffffff;
+        border-bottom: 1px solid #e0e0e0;
+        height: 70px;
+        gap: 16px;
+    }
+
+    .btn-back {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        border-radius: 50%;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #ccc;
+        cursor: pointer;
+    }
+
+    .breadcrumb ol {
+        display: flex;
+        list-style: none;
+        gap: 8px;
+        font-size: 14px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .breadcrumb a {
+        color: #666;
+        text-decoration: none;
+    }
+    .breadcrumb .current-page {
+        font-weight: 600;
+        color: #000;
+    }
+
+    /* TABS */
+    .page-content {
+        padding: 24px;
+    }
     .tab-bar {
         display: flex;
-        border-bottom: 2px solid #eee;
+        gap: 8px;
+        border-bottom: 1px solid #ddd;
         margin-bottom: 20px;
     }
+
     .tab-bar button {
-        padding: 10px 20px;
+        padding: 12px 24px;
         border: none;
         background: none;
         cursor: pointer;
         color: #666;
-    }
-    .active {
-        border-bottom: 2px solid #007bff;
-        color: #007bff !important;
-        font-weight: bold;
+        border-bottom: 2px solid transparent;
+        transition: all 0.2s;
     }
 
+    .tab-bar button.active {
+        color: #007bff;
+        border-bottom: 2px solid #007bff;
+        font-weight: 600;
+    }
+
+    /* CONTENT CARD */
     .content-card {
         background: white;
-        border: 1px solid #ddd;
-        padding: 2rem;
-        border-radius: 8px;
-        min-height: 300px;
+        border: 1px solid #eee;
+        border-radius: 12px;
+        padding: 32px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     }
 
-    .progress-bar {
-        height: 6px;
-        background: #eee;
-        width: 100%;
-        margin: 10px 0;
-        border-radius: 3px;
-        overflow: hidden;
-    }
-    .progress-fill {
-        height: 100%;
-        background: #007bff;
-        transition: width 0.3s ease;
+    .tab-section h2 {
+        margin-top: 0;
+        margin-bottom: 20px;
+        font-size: 1.25rem;
     }
 
-    .footer-actions {
+    /* GRIDS & UI */
+    .info-grid {
         display: flex;
-        justify-content: space-between;
-        margin-top: 30px;
-    }
-
-    .submit-btn {
-        background: #28a745;
-        color: white;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    input[type='text'],
-    input[type='email'],
-    select {
-        display: block;
-        margin: 10px 0;
-        padding: 10px;
-        width: 100%;
+        flex-direction: column;
+        gap: 12px;
         max-width: 400px;
+    }
+    .stats-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    .stat-box {
+        padding: 16px;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        text-align: center;
+    }
+    .stat-box .label {
+        display: block;
+        font-size: 12px;
+        color: #666;
+    }
+    .stat-box .value {
+        font-size: 20px;
+        font-weight: bold;
+    }
+    .positive {
+        color: green;
+    }
+
+    textarea,
+    select {
+        padding: 8px;
         border: 1px solid #ccc;
         border-radius: 4px;
     }
 
-    .checkbox-container {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 15px;
+    .danger-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 6px;
         cursor: pointer;
-    }
-
-    button:disabled {
-        opacity: 0.5;
-        cursor: not-allowed;
     }
 </style>
