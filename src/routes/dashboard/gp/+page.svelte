@@ -1,30 +1,60 @@
-<script>
-    // Navigation State
-    let activeTab = 'General';
-    const tabs = ['General', 'Analytics', 'Settings'];
+<script lang="ts">
+    // 1. REACTIVE STATE (Svelte 5 Runes)
+    let activeTab = $state<string>('General');
+    const tabs: string[] = ['General', 'Analytics', 'Settings'];
 
-    // 1. ISOLATED DATA OBJECTS
-    // Each tab has its own object so they don't interfere
-    let generalData = { name: '', preference: 'low', confirmed: false };
-    let analyticsData = { reportTitle: 'Monthly Overview', views: 1200 };
-    let settingsData = { email: 'user@example.com', notifications: true };
+    // Isolated Data Objects with explicit types
+    interface GeneralData {
+        name: string;
+        preference: string;
+        confirmed: boolean;
+    }
+    interface AnalyticsData {
+        reportTitle: string;
+        views: number;
+    }
+    interface SettingsData {
+        email: string;
+        notifications: boolean;
+    }
 
-    // Flow Logic (Only for "General" tab)
-    let currentStep = 1;
-    const totalSteps = 3;
+    let generalData = $state<GeneralData>({
+        name: '',
+        preference: 'low',
+        confirmed: false,
+    });
+    let analyticsData = $state<AnalyticsData>({
+        reportTitle: 'Monthly Overview',
+        views: 1200,
+    });
+    let settingsData = $state<SettingsData>({
+        email: 'user@example.com',
+        notifications: true,
+    });
 
-    const nextStep = () => {
+    // Flow Logic
+    let currentStep = $state<number>(1);
+    const totalSteps: number = 3;
+
+    // 2. TYPED FUNCTIONS
+    const nextStep = (): void => {
         if (currentStep < totalSteps) currentStep++;
     };
-    const prevStep = () => {
+
+    const prevStep = (): void => {
         if (currentStep > 1) currentStep--;
     };
 
-    const handleTabChange = (tab) => {
+    /**
+     * FIX: Added ': string' to define the parameter type
+     * Added ': void' to define the return type
+     */
+    const handleTabChange = (tab: string): void => {
         activeTab = tab;
+        if (tab !== 'General') currentStep = 1;
     };
 
-    const submitGeneralFlow = () => {
+    const submitGeneralFlow = (): void => {
         console.log('Submitting General:', generalData);
         alert('General Flow Submitted!');
     };
@@ -36,8 +66,9 @@
     <nav class="tab-bar">
         {#each tabs as tab}
             <button
+                type="button"
                 class:active={activeTab === tab}
-                on:click={() => handleTabChange(tab)}
+                onclick={() => handleTabChange(tab)}
             >
                 {tab}
             </button>
@@ -78,7 +109,7 @@
                     <section>
                         <h2>Review</h2>
                         <p>Name: {generalData.name}</p>
-                        <label>
+                        <label class="checkbox-container">
                             <input
                                 type="checkbox"
                                 bind:checked={generalData.confirmed}
@@ -90,16 +121,22 @@
             </div>
 
             <div class="footer-actions">
-                <button disabled={currentStep === 1} on:click={prevStep}
-                    >Back</button
+                <button
+                    type="button"
+                    disabled={currentStep === 1}
+                    onclick={prevStep}
                 >
+                    Back
+                </button>
+
                 {#if currentStep < totalSteps}
-                    <button on:click={nextStep}>Next Step</button>
+                    <button type="button" onclick={nextStep}>Next Step</button>
                 {:else}
                     <button
+                        type="button"
                         class="submit-btn"
                         disabled={!generalData.confirmed}
-                        on:click={submitGeneralFlow}
+                        onclick={submitGeneralFlow}
                     >
                         Submit Flow
                     </button>
@@ -117,7 +154,7 @@
                 <h2>User Settings</h2>
                 <label>Email Address:</label>
                 <input type="email" bind:value={settingsData.email} />
-                <label>
+                <label class="checkbox-container">
                     <input
                         type="checkbox"
                         bind:checked={settingsData.notifications}
@@ -140,10 +177,11 @@
         border: none;
         background: none;
         cursor: pointer;
+        color: #666;
     }
     .active {
         border-bottom: 2px solid #007bff;
-        color: #007bff;
+        color: #007bff !important;
         font-weight: bold;
     }
 
@@ -152,18 +190,21 @@
         border: 1px solid #ddd;
         padding: 2rem;
         border-radius: 8px;
+        min-height: 300px;
     }
 
     .progress-bar {
-        height: 4px;
+        height: 6px;
         background: #eee;
         width: 100%;
         margin: 10px 0;
+        border-radius: 3px;
+        overflow: hidden;
     }
     .progress-fill {
         height: 100%;
         background: #007bff;
-        transition: width 0.3s;
+        transition: width 0.3s ease;
     }
 
     .footer-actions {
@@ -171,27 +212,36 @@
         justify-content: space-between;
         margin-top: 30px;
     }
+
     .submit-btn {
         background: #28a745;
         color: white;
         border: none;
         padding: 10px 20px;
         border-radius: 4px;
+        cursor: pointer;
     }
 
-    input,
+    input[type='text'],
+    input[type='email'],
     select {
         display: block;
         margin: 10px 0;
-        padding: 8px;
+        padding: 10px;
         width: 100%;
-        max-width: 300px;
+        max-width: 400px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
     }
-    label {
-        display: block;
+
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        gap: 10px;
         margin-top: 15px;
-        font-weight: bold;
+        cursor: pointer;
     }
+
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
