@@ -1,3 +1,7 @@
+<script>
+    import { base } from '$app/paths';
+</script>
+
 <div class="topMenu">
     <div class="left">
         <div>
@@ -46,14 +50,14 @@
         </div>
         <div class="right__cfa">
             <a href="https://holtara.io/" target="_blank">
-                <img src="/globe.gif" alt="" />
+                <img src="{base}/globe.gif" alt="" />
                 <i class="ph-fill ph-globe-hemisphere-west"></i>
             </a>
         </div>
         <div class="user-details">
             <p>Aravinda Prabath</p>
             <div class="user-details__avatar">
-                <img src="/profile.jpg" alt="" />
+                <img src="{base}/profile.jpg" alt="" />
             </div>
         </div>
     </div>
