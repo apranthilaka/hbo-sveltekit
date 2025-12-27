@@ -13,6 +13,7 @@
         if (className.includes('lp')) return 'LP';
         if (className.includes('cp')) return 'CP';
         if (className.includes('me')) return 'ME';
+
         return '??';
     });
 
@@ -26,12 +27,14 @@
 </script>
 
 <div class="card {entityTypeClass}">
-    <a href={titleLink} class="card_heading_link">
-        <div class="card_heading">
-            <div class="card_icon">{iconText}</div>
-            <h6>{title}</h6>
-        </div>
-    </a>
+    <div class="card_heading">
+        <a href={titleLink}>
+            <div class="card_heading_icon">{iconText}</div>
+            <div>
+                <h6>{title}</h6>
+            </div>
+        </a>
+    </div>
 
     <div class="card_links">
         {#each menuItems as label}
@@ -50,16 +53,9 @@
     </div>
 </div>
 
-<style>
-    /* Base Variables */
+<style lang="scss">
     .card {
-        --header-background-color: #ffffff;
-        --header-border-color: #e0e0e0;
-        --icon-border-color: #e0e0e0;
-        --icon-background-color: #e3e3e3;
-        --grid-border-color: #e0e0e0;
-
-        border: 1px solid var(--grid-border-color);
+        border: 1px solid gray;
         border-radius: 8px;
         transition:
             box-shadow 0.3s ease,
@@ -67,9 +63,29 @@
         height: min-content;
         overflow: hidden;
         background-color: white;
+
+        &_heading {
+            h6 {
+                margin: 0;
+            }
+            a {
+                border: 1px solid blue;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                padding: 16px 24px;
+                gap: 8px;
+            }
+        }
+        &:hover {
+            border-color: blue;
+        }
     }
 
-    .card:hover {
-        box-shadow: rgba(0, 0, 0, 0.1);
+    .card_links {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
+        border: 1px solid red;
     }
 </style>

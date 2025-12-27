@@ -35,15 +35,16 @@
         display: grid;
         grid-template-columns: max-content auto;
         grid-template-rows: 56px 1fr;
+        border: 10px solid orange;
     }
 
     .content-area {
         display: grid;
         grid-column: 2/3;
         grid-row: 2/3;
-        border: 1px solid red;
-        width: 100%;
-        height: 100%;
+        display: flex;
+
+        border: 10px solid blue;
     }
     /* Keep layout elements static during transitions */
     :global(.app-container > Topbar),
