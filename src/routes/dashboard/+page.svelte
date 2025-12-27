@@ -36,19 +36,17 @@
         <h1>Entity Dashboard</h1>
     </header>
 
-    <main class="dashboard-content">
-        <div class="card-grid">
-            {#each entities as entity}
-                <Card
-                    title={entity.title}
-                    entityTypeClass={entity.typeClass}
-                    titleLink="{base}/dashboard/gp?name={encodeURIComponent(
-                        entity.title
-                    )}"
-                />
-            {/each}
-        </div>
-    </main>
+    <div class="card-grid">
+        {#each entities as entity}
+            <Card
+                title={entity.title}
+                entityTypeClass={entity.typeClass}
+                titleLink="{base}/dashboard/gp?name={encodeURIComponent(
+                    entity.title
+                )}"
+            />
+        {/each}
+    </div>
 </div>
 
 <style>
@@ -74,8 +72,8 @@
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 1.5rem;
         padding: 0 24px;
+        border: 30px solid red;
         overflow: auto;
-        height: 100%;
-        border: 10px solid red;
+        /* height: max-content; */
     }
 </style>

@@ -36,14 +36,12 @@
         grid-template-columns: max-content auto;
         grid-template-rows: 56px 1fr;
         border: 10px solid orange;
+        overflow: hidden;
     }
 
     .content-area {
-        display: grid;
         grid-column: 2/3;
         grid-row: 2/3;
-        display: flex;
-
         border: 10px solid blue;
     }
     /* Keep layout elements static during transitions */
