@@ -1,75 +1,85 @@
 <script lang="ts">
     import { base } from '$app/paths';
     import { page } from '$app/stores';
+    import { browser } from '$app/environment';
+    import { onMount } from 'svelte';
 
-    // 1. TYPES & INTERFACES
-    interface GeneralData {
-        name: string;
-        confirmed: boolean;
-    }
-
-    // 2. REACTIVE STATE (Svelte 5 Runes)
-    // We add explicit types to the states to prevent 'any' errors
+    // 1. STATE & TYPES
+    // We initialize with a default to allow the static build to complete without errors
+    let entityName = $state<string>('Dashboard');
     let activeTab = $state<string>('General');
     let currentStep = $state<number>(1);
-    let generalData = $state<GeneralData>({
-        name: '',
-        confirmed: false,
-    });
 
     const tabs: string[] = ['General', 'Analytics', 'Settings'];
     const totalSteps: number = 3;
 
-    // 3. DERIVED VALUES
-    // Safely access the page store. We use the '$' prefix for stores in Svelte.
-    let entityName = $derived(
-        $page?.url?.searchParams?.get('name') || 'GP Details'
-    );
+    interface GeneralData {
+        name: string;
+        preference: string;
+        confirmed: boolean;
+    }
+    let generalData = $state<GeneralData>({
+        name: '',
+        preference: 'low',
+        confirmed: false,
+    });
 
-    // 4. FUNCTIONS
-    // Added return type ': void' and parameter type ': string'
-    function handleTabChange(tab: string): void {
+    // 2. PRERENDER-SAFE LOGIC
+    // onMount only runs in the browser, skipping the GitHub Pages build crash
+    onMount(() => {
+        if (browser) {
+            const nameParam = $page.url.searchParams.get('name');
+            if (nameParam) {
+                entityName = nameParam;
+                generalData.name = nameParam;
+            }
+        }
+    });
+
+    // 3. TYPED FUNCTIONS
+    // Explicitly typing 'tab' as string to fix js(7006)
+    const handleTabChange = (tab: string): void => {
         activeTab = tab;
         if (tab !== 'General') {
             currentStep = 1;
         }
-    }
+    };
 
-    // Navigation function with SSR safety check
-    function goBack(): void {
-        if (typeof window !== 'undefined' && window.history) {
+    const nextStep = (): void => {
+        if (currentStep < totalSteps) currentStep++;
+    };
+
+    const prevStep = (): void => {
+        if (currentStep > 1) currentStep--;
+    };
+
+    const goBack = (): void => {
+        if (browser && window.history) {
             window.history.back();
         }
-    }
+    };
 
-    function incrementStep(): void {
-        if (currentStep < totalSteps) currentStep++;
-    }
-
-    function decrementStep(): void {
-        if (currentStep > 1) currentStep--;
-    }
+    const submitFlow = (): void => {
+        console.log('Submitted:', generalData);
+        alert('Flow Submitted Successfully!');
+    };
 </script>
 
 <div class="gp-heading">
     <button
         onclick={goBack}
         class="btn-back"
-        aria-label="Go back"
         type="button"
+        aria-label="Go back"
     >
         <i class="ph ph-arrow-left"></i>
     </button>
 
     <nav class="breadcrumb">
         <ol>
-            <li>
-                <a href="{base}/dashboard">Dashboard</a>
-            </li>
+            <li><a href="{base}/dashboard">Dashboard</a></li>
             <li class="separator">/</li>
-            <li>
-                <span class="current-page">{entityName}</span>
-            </li>
+            <li><span class="current-page">{entityName}</span></li>
         </ol>
     </nav>
 </div>
@@ -90,8 +100,7 @@
     <div class="content-card">
         {#if activeTab === 'General'}
             <div class="step-indicator">
-                <span class="step-text">Step {currentStep} of {totalSteps}</span
-                >
+                <p>Step {currentStep} of {totalSteps}</p>
                 <div class="progress-bar">
                     <div
                         class="progress-fill"
@@ -102,99 +111,89 @@
 
             <div class="step-body">
                 {#if currentStep === 1}
-                    <div class="form-group">
-                        <h2>Setup</h2>
-                        <input
-                            type="text"
-                            bind:value={generalData.name}
-                            placeholder="Entity Name"
-                            class="input-field"
-                        />
-                    </div>
+                    <h2>General Setup</h2>
+                    <input
+                        type="text"
+                        bind:value={generalData.name}
+                        placeholder="Enter entity name..."
+                        class="input-field"
+                    />
                 {:else if currentStep === 2}
-                    <div class="form-group">
-                        <h2>Configuration</h2>
-                        <p>
-                            Adjusting settings for <strong>{entityName}</strong
-                            >...
-                        </p>
-                    </div>
+                    <h2>Configuration</h2>
+                    <select
+                        bind:value={generalData.preference}
+                        class="input-field"
+                    >
+                        <option value="high">High Priority</option>
+                        <option value="low">Low Priority</option>
+                    </select>
                 {:else if currentStep === 3}
-                    <div class="form-group">
-                        <h2>Review</h2>
-                        <label class="checkbox-label">
-                            <input
-                                type="checkbox"
-                                bind:checked={generalData.confirmed}
-                            />
-                            <span>Finalize and confirm details</span>
-                        </label>
-                    </div>
+                    <h2>Review & Confirm</h2>
+                    <p><strong>Name:</strong> {generalData.name}</p>
+                    <label class="checkbox-label">
+                        <input
+                            type="checkbox"
+                            bind:checked={generalData.confirmed}
+                        />
+                        I confirm these details are correct.
+                    </label>
                 {/if}
             </div>
 
             <div class="footer-actions">
                 <button
                     type="button"
-                    class="btn-secondary"
                     disabled={currentStep === 1}
-                    onclick={decrementStep}
+                    onclick={prevStep}
                 >
                     Back
                 </button>
 
                 {#if currentStep < totalSteps}
-                    <button
-                        type="button"
-                        class="btn-primary"
-                        onclick={incrementStep}
+                    <button type="button" class="btn-primary" onclick={nextStep}
+                        >Next</button
                     >
-                        Next
-                    </button>
                 {:else}
                     <button
-                        type="submit"
+                        type="button"
                         class="submit-btn"
                         disabled={!generalData.confirmed || !generalData.name}
+                        onclick={submitFlow}
                     >
                         Submit Flow
                     </button>
                 {/if}
             </div>
         {:else}
-            <div class="tab-content">
-                <h2>{activeTab} Content</h2>
-                <p>
-                    Displaying information for {entityName} within the {activeTab}
-                    module.
-                </p>
+            <div class="other-tab">
+                <h2>{activeTab}</h2>
+                <p>Data visualization for {entityName} would go here.</p>
             </div>
         {/if}
     </div>
 </main>
 
 <style>
-    /* Essential layout styles */
     .gp-heading {
         display: flex;
         align-items: center;
         padding: 0 24px;
-        background: #fff;
-        border-bottom: 1px solid #e5e7eb;
+        background: white;
+        border-bottom: 1px solid #e0e0e0;
         height: 70px;
         gap: 16px;
     }
 
     .btn-back {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid #ccc;
+        background: white;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        background: transparent;
-        border-radius: 50%;
-        width: 32px;
-        height: 32px;
-        border: 1px solid #d1d5db;
-        cursor: pointer;
     }
 
     .breadcrumb ol {
@@ -203,103 +202,97 @@
         gap: 8px;
         margin: 0;
         padding: 0;
-        font-size: 0.875rem;
+        font-size: 14px;
     }
 
     .tab-bar {
         display: flex;
-        border-bottom: 2px solid #f3f4f6;
-        margin-bottom: 24px;
+        border-bottom: 2px solid #eee;
+        margin: 20px 0;
     }
 
     .tab-bar button {
-        padding: 12px 20px;
+        padding: 10px 20px;
         border: none;
         background: none;
         cursor: pointer;
-        color: #6b7280;
-        font-weight: 500;
+        color: #666;
     }
 
     .tab-bar button.active {
-        border-bottom: 2px solid #3b82f6;
-        color: #3b82f6;
+        border-bottom: 2px solid #007bff;
+        color: #007bff;
+        font-weight: bold;
+    }
+
+    .page-content {
+        padding: 24px;
     }
 
     .content-card {
         background: white;
-        border: 1px solid #e5e7eb;
+        border: 1px solid #ddd;
         padding: 2rem;
         border-radius: 8px;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
     }
 
     .progress-bar {
-        height: 8px;
-        background: #f3f4f6;
-        border-radius: 4px;
-        margin: 12px 0 24px;
+        height: 6px;
+        background: #eee;
+        border-radius: 3px;
+        margin: 10px 0 20px;
         overflow: hidden;
     }
 
     .progress-fill {
         height: 100%;
-        background: #3b82f6;
-        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        background: #007bff;
+        transition: width 0.3s ease;
     }
 
     .input-field {
         width: 100%;
         max-width: 400px;
-        padding: 10px 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 6px;
-        margin-top: 8px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        margin-top: 10px;
     }
 
     .footer-actions {
         display: flex;
         justify-content: space-between;
-        margin-top: 32px;
-        padding-top: 24px;
-        border-top: 1px solid #f3f4f6;
-    }
-
-    .btn-secondary {
-        padding: 8px 16px;
-        border: 1px solid #d1d5db;
-        background: white;
-        border-radius: 6px;
-        cursor: pointer;
+        margin-top: 30px;
     }
 
     .btn-primary {
-        padding: 8px 16px;
-        background: #3b82f6;
+        background: #007bff;
         color: white;
         border: none;
-        border-radius: 6px;
+        padding: 8px 16px;
+        border-radius: 4px;
         cursor: pointer;
     }
 
     .submit-btn {
-        padding: 8px 20px;
-        background: #10b981;
+        background: #28a745;
         color: white;
         border: none;
-        border-radius: 6px;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .checkbox-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
         cursor: pointer;
     }
 
     button:disabled {
         opacity: 0.5;
         cursor: not-allowed;
-    }
-
-    .checkbox-label {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-        cursor: pointer;
     }
 </style>
