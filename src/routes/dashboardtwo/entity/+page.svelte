@@ -8,8 +8,13 @@
 </script>
 
 <div>
-    <a href="{base}/dashboardtwo">Entity Page</a>
+    <a href="{base}/dashboardtwo">👈 Back to dashboard</a>
 </div>
+<nav>
+    <a href="?tab=1">Tab 1</a>
+    <a href="?tab=2">Tab 2</a>
+    <a href="?tab=3">Tab 3</a>
+</nav>
 
 {#if activeTab === '1'}
     <div>Tab 1 Content</div>
