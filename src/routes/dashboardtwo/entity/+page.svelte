@@ -3,7 +3,8 @@
     import { base } from '$app/paths';
 
     // Derived state: automatically updates when the URL changes
-    let activeTab = $derived(page.url.searchParams.get('tab') || '1');
+    // let activeTab = $derived(page.url.searchParams.get('tab') || '1');
+    let activeTab = $derived(page.url?.searchParams?.get('tab') ?? '1');
 </script>
 
 <div>
