@@ -1,10 +1,12 @@
 <script>
     import { page } from '$app/state';
     import { base } from '$app/paths';
+    import { browser } from '$app/environment';
 
-    // Derived state: automatically updates when the URL changes
-    // let activeTab = $derived(page.url.searchParams.get('tab') || '1');
-    let activeTab = $derived(page.url?.searchParams?.get('tab') ?? '1');
+    // We only calculate this if we are in the browser
+    let activeTab = $derived(
+        browser ? page.url.searchParams.get('tab') || '1' : '1'
+    );
 </script>
 
 <div>
