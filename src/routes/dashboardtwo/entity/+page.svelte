@@ -1,12 +1,13 @@
 <script>
     import { page } from '$app/state';
+    import { base } from '$app/paths';
 
     // Derived state: automatically updates when the URL changes
     let activeTab = $derived(page.url.searchParams.get('tab') || '1');
 </script>
 
 <div>
-    <a href="/dashboardtwo">Entity Page</a>
+    <a href="{base}/dashboardtwo">Entity Page</a>
 </div>
 
 {#if activeTab === '1'}
