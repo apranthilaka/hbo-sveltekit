@@ -13,7 +13,7 @@
 
 <style>
     .left-menu {
-        width: 200px;
+        width: 250px;
         grid-column: 1/2;
         grid-row: 1/3;
         height: 100%;

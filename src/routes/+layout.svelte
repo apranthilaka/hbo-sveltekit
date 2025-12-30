@@ -8,6 +8,7 @@
 
     import { onNavigate } from '$app/navigation';
 
+    //     navigation animation
     onNavigate((navigation) => {
         if (!document.startViewTransition) return;
 
@@ -18,6 +19,7 @@
             });
         });
     });
+    //     navigation animation
 </script>
 
 <div class="root-layout">
@@ -35,14 +37,18 @@
         display: grid;
         grid-template-columns: max-content auto;
         grid-template-rows: 56px 1fr;
-        border: 10px solid orange;
+        /* border: 10px solid orange; */
         overflow: hidden;
     }
 
     .content-area {
         grid-column: 2/3;
         grid-row: 2/3;
-        border: 10px solid blue;
+        /* border: 10px solid blue; */
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
     }
     /* Keep layout elements static during transitions */
     :global(.app-container > Topbar),

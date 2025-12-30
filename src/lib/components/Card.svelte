@@ -13,7 +13,6 @@
         if (className.includes('lp')) return 'LP';
         if (className.includes('cp')) return 'CP';
         if (className.includes('me')) return 'ME';
-
         return '??';
     });
 
