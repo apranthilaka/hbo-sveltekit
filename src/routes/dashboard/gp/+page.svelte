@@ -43,7 +43,7 @@
         <ol>
             <li><a href="{base}/dashboard">Dashboard</a></li>
             <li class="separator">/</li>
-            <li><span class="current-page">{entityName}</span></li>
+            <li><span class="current-page font-medium">{entityName}</span></li>
         </ol>
     </nav>
 </div>
