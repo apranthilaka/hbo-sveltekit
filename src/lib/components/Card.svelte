@@ -25,28 +25,43 @@
     ];
 </script>
 
-<div class="card {entityTypeClass}">
-    <div class="card_heading">
-        <a href={titleLink}>
-            <div class="card_heading_icon">{iconText}</div>
+<div
+    class="card {entityTypeClass} hover:border-neutral-300 transition-border border border-neutral-300 -mr-px -mb-px shadow hover:shadow-xl transition-shadow duration-300"
+>
+    <!-- card heading  -->
+    <div class="group card_heading font-medium text-base">
+        <a class="group-hover:underline" href={titleLink}>
+            <div
+                class="group-hover:no-underline card_heading_icon w-10 h-10 flex items-center justify-center rounded-full"
+            >
+                {iconText}
+            </div>
             <div>
                 <h6>{title}</h6>
             </div>
         </a>
     </div>
-
+    <!-- card links  -->
     <div class="card_links">
         {#each menuItems as label}
-            <div role="button" tabindex="0" class="card_link_item">
-                <div class="card_links_left-icon">
+            <div
+                class="group card_links_item border border-neutral-200 -mr-px -mb-px border-l-0"
+            >
+                <div class="none card_links_left-icon group-hover:block">
                     <i class="ph ph-chat-centered-dots"></i>
                 </div>
-                <div class="card_links_label">
-                    <p>{label}</p>
+                <div
+                    class="card_links_label text-base text-neutral-500 group-hover:text-neutral-800 cursor-pointer group-hover:font-medium transition-all duration-100"
+                >
+                    {label}
                 </div>
-                <div class="card_links_right-icon">
+                <!-- right icon  -->
+                <div
+                    class="invisible group-hover:visible mr-1 group-hover:translate-x-1.25 card_links_right-icon transition-transform duration-300 ease-in-out"
+                >
                     <i class="ph ph-arrow-right right-icon"></i>
                 </div>
+                <!-- right icon  -->
             </div>
         {/each}
     </div>
@@ -54,7 +69,7 @@
 
 <style lang="scss">
     .card {
-        border: 1px solid gray;
+        // border: 1px solid gray;
         border-radius: 8px;
         transition:
             box-shadow 0.3s ease,
@@ -68,7 +83,7 @@
                 margin: 0;
             }
             a {
-                border: 1px solid blue;
+                // border: 1px solid blue;
                 display: flex;
                 flex-direction: row;
                 justify-content: flex-start;
@@ -77,14 +92,127 @@
                 gap: 8px;
             }
         }
-        &:hover {
-            border-color: blue;
-        }
     }
 
     .card_links {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(49%, 1fr));
-        border: 1px solid red;
+
+        &_item {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            padding: 12px;
+            gap: 8px;
+        }
+        &_label {
+            white-space: nowrap; /* Prevents text from wrapping to a new line */
+            overflow: hidden; /* Hides any text that overflows the container */
+            text-overflow: ellipsis; /* Displays the ellipsis (...) for clipped text */
+
+            /* Other necessary properties */
+            width: 200px; /* or a percentage, max-width, or flex basis */
+            display: block; /* or inline-block, flex item, etc. */
+        }
+    }
+
+    .card--lp {
+        .card_heading {
+            background-color: white;
+        }
+        .card_heading_icon {
+            background-color: #dffbe5;
+            width: 40px;
+            height: 40px;
+        }
+        transition: all 0.5s;
+
+        &:hover {
+            transition: all 0.5s;
+
+            .card_heading {
+                background-color: #dffbe5;
+            }
+            .card_heading_icon {
+                background-color: #85f09c;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    .card--gp {
+        .card_heading {
+            background-color: white;
+        }
+        .card_heading_icon {
+            background-color: #fbf5df;
+            width: 40px;
+            height: 40px;
+        }
+        transition: all 0.5s;
+
+        &:hover {
+            transition: all 0.5s;
+
+            .card_heading {
+                background-color: #fbf5df;
+            }
+            .card_heading_icon {
+                background-color: #f1dc8e;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+
+    .card--cp {
+        .card_heading {
+            background-color: white;
+        }
+        .card_heading_icon {
+            background-color: #f8edfd;
+            width: 40px;
+            height: 40px;
+        }
+        transition: all 0.5s;
+
+        &:hover {
+            transition: all 0.5s;
+
+            .card_heading {
+                background-color: #f8edfd;
+            }
+            .card_heading_icon {
+                background-color: #dda8f5;
+                width: 40px;
+                height: 40px;
+            }
+        }
+    }
+    .card--me {
+        .card_heading {
+            background-color: white;
+        }
+        .card_heading_icon {
+            background-color: #edfafd;
+            width: 40px;
+            height: 40px;
+        }
+        transition: all 0.5s;
+
+        &:hover {
+            transition: all 0.5s;
+
+            .card_heading {
+                background-color: #edfafd;
+            }
+            .card_heading_icon {
+                background-color: #aee9f4;
+                width: 40px;
+                height: 40px;
+            }
+        }
     }
 </style>

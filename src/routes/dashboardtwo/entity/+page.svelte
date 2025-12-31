@@ -23,8 +23,13 @@
     }
 </script>
 
-<div>
-    <a href="{base}/dashboardtwo">👈 Back to dashboard</a>
+<div
+    class=" group h-17.5 pl-24px flex flex-row items-center justify-start gap-3 pl-6 pr-6"
+>
+    <a
+        class="group-hover:text-neutral-900 group-hover:underline transi duration-200 text-neutral-400"
+        href="{base}/dashboardtwo">Back to dashboard</a
+    >
     <span>/</span>
     <span style="font-weight: bold;">{entityName}</span>
 </div>

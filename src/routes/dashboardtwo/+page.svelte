@@ -31,10 +31,12 @@
     ];
 </script>
 
-<div class="dashboard-title">Dashboard Title</div>
-
-<div class="card-container">
-    <div class="card-container_cards">
+<div class="dashboard-title font-medium text-lg h-17.5 pb-0">
+    Dashboard Title
+</div>
+<div>{console.log(entities)}</div>
+<div class="card-container pl-6 pr-6 pb-6 bt-0">
+    <div class="card-container_cards pt-0">
         {#each entities as entity}
             <Card
                 entityTypeClass={entity.typeClass}
@@ -49,18 +51,20 @@
 
 <style lang="scss">
     .dashboard-title {
-        height: 56px;
+        flex-shrink: 0;
+        // height: 56px;
         padding: 0 24px;
         // border: 1px solid red;
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        // border: 1px solid blue;
     }
     .card-container {
         // border: 10px solid rgb(0, 167, 50);
 
         overflow-y: auto; /* Ensure scrolling is still enabled */
-        padding: 24px;
+        // padding: 24px;
 
         /* 1. Hide scrollbar for Chrome, Safari, and newer Edge */
         &::-webkit-scrollbar {
@@ -78,16 +82,13 @@
         overflow-y: auto;
         // border: 10px solid rgb(0, 167, 50);
         /* Remove height: 100% - flex-grow handles it better here */
-        border: 1px solid red;
 
         &_cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             grid-template-rows: min-content;
             gap: 16px;
-            height: 100%;
-
-            border: 1px solid red;
+            // height: 100%;
         }
     }
 </style>
