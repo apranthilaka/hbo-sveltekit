@@ -37,8 +37,8 @@
         display: grid;
         grid-template-columns: max-content auto;
         grid-template-rows: 56px 1fr;
-        /* border: 10px solid orange; */
-        overflow: hidden;
+        border: 10px solid orange;
+        overflow: auto;
     }
 
     .content-area {

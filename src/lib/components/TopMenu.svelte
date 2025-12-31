@@ -2,7 +2,7 @@
     import { base } from '$app/paths';
 </script>
 
-<div class="topMenu">
+<div class="top-menu">
     <div class="left">
         <div>
             <div class="system-status">
@@ -12,6 +12,18 @@
         </div>
     </div>
     <div class="right">
+        <div>
+            <div class="max-w-sm mx-auto">
+                <select
+                    class="w-full px-4 py-3 text-base text-gray-700 bg-gray-100 border-transparent rounded-xl focus:border-gray-500 focus:bg-white focus:ring-0 appearance-none cursor-pointer"
+                >
+                    <option>Filter by Category</option>
+                    <option>Design</option>
+                    <option>Development</option>
+                    <option>Marketing</option>
+                </select>
+            </div>
+        </div>
         <div>
             <select
                 name="favorite-cuisine"
@@ -63,8 +75,8 @@
     </div>
 </div>
 
-<style lang="scss" scoped>
-    .topMenu {
+<style lang="scss">
+    .top-menu {
         grid-row: 1/2;
         grid-column: 2/3;
 
