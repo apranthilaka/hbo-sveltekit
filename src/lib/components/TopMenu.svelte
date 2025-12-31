@@ -13,52 +13,103 @@
     </div>
     <div class="right">
         <div>
-            <div class="max-w-sm mx-auto">
-                <select
-                    class="w-full px-4 py-3 text-base text-gray-700 bg-gray-100 border-transparent rounded-xl focus:border-gray-500 focus:bg-white focus:ring-0 appearance-none cursor-pointer"
-                >
-                    <option>Filter by Category</option>
-                    <option>Design</option>
-                    <option>Development</option>
-                    <option>Marketing</option>
-                </select>
+            <div class="max-w-sm mx-auto p-6">
+                <!-- <label class="block mb-2 text-sm font-semibold text-gray-700"
+                    >Refined Select</label
+                > -->
+
+                <div class="relative group">
+                    <select
+                        class="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+                    >
+                        <option value="" disabled selected>History</option>
+                        <option>Standard Delivery</option>
+                        <option>Express Shipping</option>
+                        <option>Overnight Pickup</option>
+                    </select>
+
+                    <div
+                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+                    >
+                        <svg
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </div>
+                </div>
             </div>
         </div>
         <div>
-            <select
-                name="favorite-cuisine"
-                aria-label="Select your favorite cuisine..."
-                required
-            >
-                <option selected disabled value="">History</option>
-                <option>Italian</option>
-                <option>Japanese</option>
-                <option>Indian</option>
-                <option>Thai</option>
-                <option>French</option>
-            </select>
+            <div class="max-w-sm mx-auto p-6">
+                <!-- <label class="block mb-2 text-sm font-semibold text-gray-700"
+                    >Refined Select</label
+                > -->
+
+                <div class="relative group">
+                    <select
+                        class="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+                    >
+                        <option value="" disabled selected>IQ system</option>
+                        <option>Standard Delivery</option>
+                        <option>Express Shipping</option>
+                        <option>Overnight Pickup</option>
+                    </select>
+
+                    <div
+                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+                    >
+                        <svg
+                            class="h-5 w-5"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd"
+                            />
+                        </svg>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div>
-            <select
-                name="favorite-cuisine"
-                aria-label="Select your favorite cuisine..."
-                required
-            >
-                <option selected disabled value="">IQ System</option>
-                <option>Italian</option>
-                <option>Japanese</option>
-                <option>Indian</option>
-                <option>Thai</option>
-                <option>French</option>
-            </select>
-        </div>
-        <div>
-            <input
-                type="search"
-                name="search"
-                placeholder="Search"
-                aria-label="Search"
-            />
+            <div class="max-w-md mx-auto p-6">
+                <div class="relative group">
+                    <div
+                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+                    >
+                        <svg
+                            class="w-5 h-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                            />
+                        </svg>
+                    </div>
+
+                    <input
+                        type="search"
+                        placeholder="Search..."
+                        class="block w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all shadow-sm"
+                    />
+                </div>
+            </div>
         </div>
         <div class="right__cfa">
             <a href="https://holtara.io/" target="_blank">
@@ -85,6 +136,7 @@
         padding: 20px 24px;
         display: flex;
         justify-content: space-between;
+        // border: 10px solid red;
 
         select,
         input {
