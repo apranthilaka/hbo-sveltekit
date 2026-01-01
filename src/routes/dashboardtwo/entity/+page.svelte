@@ -21,10 +21,16 @@
         newUrl.searchParams.set('tab', tabValue);
         return newUrl.search;
     }
+
+    let acriveTabStyles =
+        'text-neutral-900 pl-6 pr-6 border-t border-l border-r border-emerald-200 rounded-t-sm h-[40px] flex items-center justify-center bg-emerald-50';
+    let defaultTabStyle =
+        'text-neutral-500 pl-6 pr-6 border border-neutral-300 rounded-t-sm h-[40px] flex items-center justify-center hover:bg-red-100 transition-all duration-400';
 </script>
 
+<!-- title  -->
 <div
-    class=" group h-17.5 pl-24px flex flex-row items-center justify-start gap-3 pl-6 pr-6"
+    class=" group h-17.5 pl-24px flex flex-row items-center justify-start pl-6 pr-6 gap-2 border-b border-neutral-300"
 >
     <a
         class="group-hover:text-neutral-900 group-hover:underline transi duration-200 text-neutral-400"
@@ -33,23 +39,24 @@
     <span>/</span>
     <span style="font-weight: bold;">{entityName}</span>
 </div>
+<!-- title  -->
 
-<nav style="margin-top: 10px; display: flex; gap: 15px;">
+<!-- tabs  -->
+<nav class="flex items-start border-b pl-6 pr-6 pt-6 border-emerald-600">
     <a
         href={getTabUrl('1')}
-        style={activeTab === '1' ? 'text-decoration: underline' : ''}>Tab 1</a
+        class={activeTab === '1' ? acriveTabStyles : defaultTabStyle}>Tab 1</a
     >
     <a
         href={getTabUrl('2')}
-        style={activeTab === '2' ? 'text-decoration: underline' : ''}>Tab 2</a
+        class={activeTab === '2' ? acriveTabStyles : defaultTabStyle}>Tab 2</a
     >
     <a
         href={getTabUrl('3')}
-        style={activeTab === '3' ? 'text-decoration: underline' : ''}>Tab 3</a
+        class={activeTab === '3' ? acriveTabStyles : defaultTabStyle}>Tab 3</a
     >
 </nav>
-
-<hr />
+<!-- tabs  -->
 
 {#if activeTab === '1'}
     <h3>Viewing Details for {entityName}</h3>

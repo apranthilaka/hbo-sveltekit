@@ -12,105 +12,67 @@
         </div>
     </div>
     <div class="right">
-        <div>
-            <div class="max-w-sm mx-auto p-6">
-                <!-- <label class="block mb-2 text-sm font-semibold text-gray-700"
-                    >Refined Select</label
-                > -->
+        <div class="relative group w-55">
+            <select
+                class="  h-9 w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+            >
+                <option value="" disabled selected>History</option>
+                <option>Standard Delivery</option>
+                <option>Express Shipping</option>
+                <option>Overnight Pickup</option>
+            </select>
 
-                <div class="relative group">
-                    <select
-                        class="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
-                    >
-                        <option value="" disabled selected>History</option>
-                        <option>Standard Delivery</option>
-                        <option>Express Shipping</option>
-                        <option>Overnight Pickup</option>
-                    </select>
-
-                    <div
-                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
-                    >
-                        <svg
-                            class="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                clip-rule="evenodd"
-                            />
-                        </svg>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div class="max-w-sm mx-auto p-6">
-                <!-- <label class="block mb-2 text-sm font-semibold text-gray-700"
-                    >Refined Select</label
-                > -->
-
-                <div class="relative group">
-                    <select
-                        class="w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 py-3 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
-                    >
-                        <option value="" disabled selected>IQ system</option>
-                        <option>Standard Delivery</option>
-                        <option>Express Shipping</option>
-                        <option>Overnight Pickup</option>
-                    </select>
-
-                    <div
-                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
-                    >
-                        <svg
-                            class="h-5 w-5"
-                            viewBox="0 0 20 20"
-                            fill="currentColor"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                clip-rule="evenodd"
-                            />
-                        </svg>
-                    </div>
-                </div>
+            <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+            >
+                <i class="ph ph-caret-down"></i>
             </div>
         </div>
 
-        <div>
-            <div class="max-w-md mx-auto p-6">
-                <div class="relative group">
-                    <div
-                        class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-                    >
-                        <svg
-                            class="w-5 h-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                        >
-                            <path
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                stroke-width="2"
-                                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                            />
-                        </svg>
-                    </div>
+        <div class="relative group w-55">
+            <select
+                class="h-9 w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+            >
+                <option value="" disabled selected>IQ system</option>
+                <option>Standard Delivery</option>
+                <option>Express Shipping</option>
+                <option>Overnight Pickup</option>
+            </select>
 
-                    <input
-                        type="search"
-                        placeholder="Search..."
-                        class="block w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all shadow-sm"
+            <div
+                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+            >
+                <i class="ph ph-caret-down"></i>
+            </div>
+        </div>
+
+        <div class="relative group w-55">
+            <div
+                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
+            >
+                <svg
+                    class="w-5 h-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                     />
-                </div>
+                </svg>
             </div>
+
+            <input
+                type="search"
+                placeholder="Search..."
+                class="h-9 block w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all shadow-sm"
+            />
         </div>
+
         <div class="right__cfa">
             <a href="https://holtara.io/" target="_blank">
                 <img src="{base}/globe.gif" alt="" />

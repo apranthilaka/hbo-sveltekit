@@ -28,15 +28,47 @@
         { title: 'Solaris Systems', typeClass: 'card--lp' },
         { title: 'Luna Logistics', typeClass: 'card--cp' },
         { title: 'Meteor Media', typeClass: 'card--me' },
+        { title: 'Solaris Systems', typeClass: 'card--lp' },
+        { title: 'Luna Logistics', typeClass: 'card--cp' },
+        { title: 'Meteor Media', typeClass: 'card--me' },
+        { title: 'Nebula Nexus', typeClass: 'card--gp' },
+        { title: 'Solaris Systems', typeClass: 'card--lp' },
+        { title: 'Luna Logistics', typeClass: 'card--cp' },
+        { title: 'Meteor Media', typeClass: 'card--me' },
+        { title: 'Nebula Nexus', typeClass: 'card--gp' },
+        { title: 'Solaris Systems', typeClass: 'card--lp' },
+        { title: 'Luna Logistics', typeClass: 'card--cp' },
+        { title: 'Meteor Media', typeClass: 'card--me' },
     ];
 </script>
 
-<div class="dashboard-title font-medium text-lg h-17.5 pb-0">
-    Dashboard Title
+<div
+    class="dashboard-title font-medium text-lg h-17.5 pb-0 border-b border-neutral-200 flex items-center justify-between pr-6 pl-6"
+>
+    <div>Dashboard Title</div>
+
+    <div
+        class="relative group w-55 font-normal text-base min-w-2xs text-gray-700"
+    >
+        <select
+            class="  h-9 w-full appearance-none rounded-full border border-gray-300 bg-white px-4 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+        >
+            <option value="" disabled selected>Entity type</option>
+            <option>Standard Delivery</option>
+            <option>Express Shipping</option>
+            <option>Overnight Pickup</option>
+        </select>
+
+        <div
+            class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+        >
+            <i class="ph ph-caret-down"></i>
+        </div>
+    </div>
 </div>
 <div>{console.log(entities)}</div>
 <div class="card-container pl-6 pr-6 pb-6 bt-0">
-    <div class="card-container_cards pt-0">
+    <div class="card-container_cards pt-6">
         {#each entities as entity}
             <Card
                 entityTypeClass={entity.typeClass}
@@ -52,13 +84,6 @@
 <style lang="scss">
     .dashboard-title {
         flex-shrink: 0;
-        // height: 56px;
-        padding: 0 24px;
-        // border: 1px solid red;
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        // border: 1px solid blue;
     }
     .card-container {
         // border: 10px solid rgb(0, 167, 50);

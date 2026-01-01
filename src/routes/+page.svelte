@@ -26,12 +26,12 @@
 </script>
 
 <div class="sitemap-container">
-    <div class="data-wrapper">
-        <div class="sitemap-title">
+    <div class="data-wrapper flex items-center">
+        <div class="sitemap-title w-full">
             <i class="ph-fill ph-squares-four"></i>
             <h4>SITEMAP</h4>
         </div>
-        <div class="sitemap-cards">
+        <div class="sitemap-cards w-full md:w-1/2 2xl:w-3xl">
             {#each cardsData as card}
                 <div
                     class="card border border-neutral-300 shadow hover:shadow-lg rounded-md min-h-40"
@@ -50,16 +50,9 @@
 
 <style lang="scss">
     .sitemap-container {
-        // border: 10px solid red;
         grid-column: 2/3;
         grid-row: 2/3;
         overflow: hidden;
-        /* 2. Turn on Flexbox */
-        // display: flex;
-        // flex-direction: column;
-        /* 3. Prevent the container itself from scrolling */
-        // overflow: hidden;
-        // box-sizing: border-box;
     }
 
     .data-wrapper {
