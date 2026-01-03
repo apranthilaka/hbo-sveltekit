@@ -1,0 +1,11 @@
+/* select,
+input {
+    &:active {
+        border: 1px solid gray;
+    }
+
+    &:focus {
+        box-shadow: none;
+        border: 1px solid #d5d5d5;
+    }
+} */

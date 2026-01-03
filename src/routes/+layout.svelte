@@ -1,5 +1,6 @@
 <script lang="ts">
     import '../styles/global.css';
+    import '../styles/formelements.css';
     import { base } from '$app/paths';
     import TopMenu from '$lib/components/TopMenu.svelte';
     import LeftMenu from '$lib/components/LeftMenu.svelte';
