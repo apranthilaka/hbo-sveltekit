@@ -26,18 +26,21 @@
 </script>
 
 <div
-    class="card {entityTypeClass} hover:border-neutral-300 transition-border border border-neutral-300 -mr-px -mb-px shadow hover:shadow-xl transition-shadow duration-300"
+    class="card {entityTypeClass} hover:border-neutral-300 transition-border -mr-px -mb-px hover:shadow-xl transition-shadow duration-300 shadow-sm border border-gray-300"
 >
     <!-- card heading  -->
     <div class="group card_heading font-medium text-base">
-        <a class="group-hover:underline" href={titleLink}>
+        <a
+            class="group-hover:underline flex items-center justify-start pl-6 rp-6 pt-1 pb-1"
+            href={titleLink}
+        >
             <div
                 class="group-hover:no-underline card_heading_icon w-10 h-10 flex items-center justify-center rounded-full"
             >
                 {iconText}
             </div>
             <div>
-                <h6>{title}</h6>
+                {title}
             </div>
         </a>
     </div>
@@ -51,7 +54,7 @@
                     <i class="ph ph-chat-centered-dots"></i>
                 </div>
                 <div
-                    class="card_links_label text-base text-neutral-500 group-hover:text-neutral-800 cursor-pointer group-hover:font-medium transition-all duration-100"
+                    class="card_links_label text-base md:text-sm text-neutral-500 group-hover:text-neutral-800 cursor-pointer group-hover:font-medium transition-all duration-100"
                 >
                     {label}
                 </div>
@@ -84,12 +87,12 @@
             }
             a {
                 // border: 1px solid blue;
-                display: flex;
-                flex-direction: row;
-                justify-content: flex-start;
-                align-items: center;
-                padding: 16px 24px;
-                gap: 8px;
+                // display: flex;
+                // flex-direction: row;
+                // justify-content: flex-start;
+                // align-items: center;
+                // padding: 16px 24px;
+                // gap: 8px;
             }
         }
     }

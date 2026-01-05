@@ -2,7 +2,7 @@
     import { base } from '$app/paths';
 </script>
 
-<div class="top-menu">
+<div class="top-menu border-b border-neutral-300">
     <div class="left">
         <div>
             <div class="system-status">
@@ -12,65 +12,65 @@
         </div>
     </div>
     <div class="right">
-        <div class="relative group w-55">
+        <div class="w-50">
+            <!-- <label
+                for="location"
+                class="block text-sm font-medium text-gray-700">Location</label
+            > -->
             <select
-                class="  h-9 w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
+                id="location"
+                name="location"
+                class=" block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-                <option value="" disabled selected>History</option>
-                <option>Standard Delivery</option>
-                <option>Express Shipping</option>
-                <option>Overnight Pickup</option>
+                <option>United States</option>
+                <option selected>Canada</option>
+                <option>Mexico</option>
             </select>
-
-            <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
+        </div>
+        <div class="w-50">
+            <!-- <label
+                for="location"
+                class="block text-sm font-medium text-gray-700">Location</label
+            > -->
+            <select
+                id="location"
+                name="location"
+                class=" block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-                <i class="ph ph-caret-down"></i>
-            </div>
+                <option>United States</option>
+                <option selected>Canada</option>
+                <option>Mexico</option>
+            </select>
         </div>
 
-        <div class="relative group w-55">
-            <select
-                class="h-9 w-full appearance-none rounded-xl border border-gray-300 bg-white px-4 pr-10 text-gray-700 transition-all focus:border-blue-500 focus:ring-2 focus:ring-blue-200 outline-none cursor-pointer"
-            >
-                <option value="" disabled selected>IQ system</option>
-                <option>Standard Delivery</option>
-                <option>Express Shipping</option>
-                <option>Overnight Pickup</option>
-            </select>
-
-            <div
-                class="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-4 text-gray-400 group-focus-within:text-blue-500"
-            >
-                <i class="ph ph-caret-down"></i>
-            </div>
-        </div>
-
-        <div class="relative group w-55">
-            <div
-                class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none"
-            >
-                <svg
-                    class="w-5 h-5 text-gray-400 group-focus-within:text-indigo-500 transition-colors"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
+        <div class="w-50">
+            <label for="search" class="sr-only">Search</label>
+            <div class="relative">
+                <!-- Search Icon -->
+                <div
+                    class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3"
                 >
-                    <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                    />
-                </svg>
+                    <svg
+                        class="h-5 w-5 text-gray-400"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                            clip-rule="evenodd"
+                        />
+                    </svg>
+                </div>
+                <!-- Input Field -->
+                <input
+                    type="search"
+                    name="search"
+                    id="search"
+                    class="block w-full rounded-lg border-gray-300 pl-10 pr-3 py-2 text-sm placeholder-gray-500 focus:border-blue-500 focus:ring-blue-500"
+                    placeholder="Search projects..."
+                />
             </div>
-
-            <input
-                type="search"
-                placeholder="Search..."
-                class="h-9 block w-full rounded-xl border border-gray-200 bg-white py-3 pl-10 pr-4 text-sm placeholder-gray-400 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-100 outline-none transition-all shadow-sm"
-            />
         </div>
 
         <div class="right__cfa">
@@ -93,18 +93,11 @@
         grid-row: 1/2;
         grid-column: 2/3;
 
-        border-bottom: 1px solid rgb(235, 235, 235);
         height: auto;
         padding: 20px 24px;
         display: flex;
         justify-content: space-between;
         // border: 10px solid red;
-
-        select,
-        input {
-            margin: 0;
-            border-radius: 1000px;
-        }
     }
 
     .left {
@@ -184,11 +177,6 @@
                     transition: img transform 0.3s ease;
                 }
             }
-        }
-
-        select,
-        input {
-            color: gray;
         }
     }
 
