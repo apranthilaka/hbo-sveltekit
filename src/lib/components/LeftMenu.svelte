@@ -51,13 +51,13 @@
     >
         {#if isMenuOpen === true}
             <button onclick={hideMenu}>
-                <img src="/Holtara Logo.svg" alt="logo" />
+                <img src="{base}/Holtara Logo.svg" alt="logo" />
             </button>
         {:else}
             <button onclick={hideMenu}>
                 <img
                     class="w-7.5 h-7.5"
-                    src="/logo-globe.svg"
+                    src="{base}/logo-globe.svg"
                     alt="small logo"
                 />
             </button>
