@@ -23,11 +23,11 @@
     //     navigation animation
 </script>
 
-<div class="root-layout">
+<div class="root-layout bg-neutral-100">
     <TopMenu />
     <LeftMenu />
 
-    <main class="content-area">
+    <main class="content-area w-full flex items-center justify-start">
         {@render children()}
     </main>
 </div>

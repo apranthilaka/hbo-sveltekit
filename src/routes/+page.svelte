@@ -22,97 +22,89 @@
             title: 'Finance Reports',
             icon: '<i class="ph ph-airplay"></i>',
         },
+        {
+            id: 3,
+            title: 'Company List',
+            icon: '<i class="ph ph-airplay"></i>',
+        },
+
+        {
+            id: 1,
+            title: 'Finance Reports',
+            icon: '<i class="ph ph-airplay"></i>',
+        },
     ];
 </script>
 
-<div class="sitemap-container">
-    <div class="data-wrapper flex items-center">
-        <div class="sitemap-title w-full">
-            <i class="ph-fill ph-squares-four"></i>
-            <h4>SITEMAP</h4>
-        </div>
-        <div class="sitemap-cards w-full md:w-1/2 2xl:w-3xl">
-            {#each cardsData as card}
-                <div
-                    class="card border border-neutral-300 shadow hover:shadow-lg rounded-md min-h-40"
-                >
-                    <div
-                        class="card_title h-12 border-b border-neutral-300 flex items-center justify-start pl-6 pr-6 gap-2"
-                    >
-                        <div class="pt-1.25">{@html card.icon}</div>
-                        <div>{card.title}</div>
-                    </div>
-                </div>
-            {/each}
-        </div>
+<!-- responsive wrapper  -->
+<div
+    class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl flex overflow-hidden flex-col h-screen mb-6"
+>
+    <!-- heading  -->
+    <div class="text-lg font-medium flex justify-start items-center h-20">
+        Sitemap
     </div>
+    <!-- heading  -->
+
+    <!-- cards  -->
+    <div class="sitemap-cards flex-1 overflow-y-auto">
+        {#each cardsData as card}
+            <div
+                class="border border-neutral-300 w-full shadow-sm hover:shadow-md rounded-lg transition-all bg-white flex flex-col"
+            >
+                <div
+                    class="card_title h-12 border-b border-neutral-300 flex items-center justify-start px-6 gap-2 shrink-0"
+                >
+                    <div class="pt-1.25">{@html card.icon}</div>
+                    <div class="font-medium text-sm">{card.title}</div>
+                </div>
+
+                <div class="min-h-[160px] p-6 text-neutral-500">
+                    card container content
+                </div>
+            </div>
+        {/each}
+    </div>
+    <!-- cards  -->
 </div>
 
+<!-- responsive wrapper  -->
+
 <style lang="scss">
-    .sitemap-container {
-        grid-column: 2/3;
-        grid-row: 2/3;
-        overflow: hidden;
-    }
+    // .sitemap-container {
+    //     grid-column: 2/3;
+    //     grid-row: 2/3;
+    //     overflow: hidden;
+    // }
 
-    .data-wrapper {
-        display: flex;
-        flex-direction: column;
-        height: 100%; /* Ensure the wrapper fills the parent container's height */
-    }
-    .sitemap-title {
-        background-color: #ffffff;
-        padding: 0 24px;
-        gap: 8px;
-        // border-bottom: 1px solid rgb(214, 214, 214);
-        display: flex;
-        justify-content: flex-start;
-        align-items: center;
-        min-height: 70px;
-
-        box-shadow:
-            rgba(0, 0, 0, 0.1) 0px 1px 3px 0px,
-            rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
-
-        h4,
-        i {
-            margin: 0;
-        }
-        i {
-            font-size: 24px;
-            //padding-top: 3px;
-        }
-    }
+    // .data-wrapper {
+    //     display: flex;
+    //     flex-direction: column;
+    //     height: 100%; /* Ensure the wrapper fills the parent container's height */
+    // }
 
     .sitemap-cards {
-        // border: 10px solid rgb(0, 167, 50);
-        height: 100%;
-        overflow-y: auto;
-
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(600px, 1fr));
-        grid-template-rows: min-content;
-        gap: 16px;
-        padding: 16px;
+        /* This makes sure columns are equal and wrap properly */
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+        /* Remove min-content to allow rows to stretch items equally */
+        grid-template-rows: auto;
+        gap: 24px;
+        padding-bottom: 2rem;
 
-        overflow-y: auto; /* Ensure scrolling is still enabled */
-
-        /* 1. Hide scrollbar for Chrome, Safari, and newer Edge */
+        /* Hide scrollbar logic remains the same... */
+        overflow-y: auto;
+        scrollbar-width: none;
         &::-webkit-scrollbar {
             display: none;
         }
-
-        /* 2. Hide scrollbar for Firefox */
-        scrollbar-width: none;
-
-        /* 3. Hide scrollbar for IE and older Edge */
         -ms-overflow-style: none;
     }
-    .card {
-        &_title {
-            display: flex;
-            justify-content: flex-start;
-            align-items: center;
-        }
-    }
+    // .card {
+    //     &_title {
+    //         display: flex;
+    //         justify-content: flex-start;
+    //         align-items: center;
+    //     }
+    // }
 </style>

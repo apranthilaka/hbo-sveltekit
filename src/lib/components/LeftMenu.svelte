@@ -40,7 +40,7 @@
 </script>
 
 <div
-    class="left-menu border-r border-neutral-300 {isMenuOpen
+    class="left-menu bg-white border-r border-neutral-300 {isMenuOpen
         ? 'w-64 translate-x-0 opacity-100'
         : 'w-18 '}"
 >

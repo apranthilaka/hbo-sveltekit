@@ -18,41 +18,54 @@
     }
 
     let activeTabStyles =
-        'text-neutral-900 pl-6 pr-6 border-t border-l border-r border-emerald-200 rounded-t-sm h-[40px] flex items-center justify-center bg-emerald-50';
+        'text-neutral-900 pl-6 pr-6   border-emerald-200 rounded-t-sm h-[40px] flex items-center justify-center bg-emerald-50 bg-neutral-900 text-white';
     let defaultTabStyle =
-        'text-neutral-500 pl-6 pr-6 border border-neutral-300 rounded-t-sm h-[40px] flex items-center justify-center hover:bg-red-100 transition-all duration-400';
+        'text-neutral-700 pl-6 pr-6  border border-neutral-300 rounded-t-sm h-[40px] flex items-center justify-center hover:bg-red-100 transition-all duration-400';
 </script>
 
-<div class="h-17.5 px-6 flex items-center gap-2 border-b border-neutral-300">
-    <a class="text-neutral-400 hover:underline" href="{base}/dashboardtwo/"
-        >Back to dashboard</a
+<div
+    class="border-b border-neutral-300 w-full bg-white flex items-start justify-center h-auto"
+>
+    <div
+        class="responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl gap-6 flex-col h-auto"
     >
-    <span>/</span>
-    <span class="font-bold">{entityName + ' Entity'} </span>
+        <!-- breadcrumb  -->
+        <div class="  flex items-center justify-start gap-2 w-full min-h-20">
+            <a
+                class="text-neutral-400 hover:underline"
+                href="{base}/dashboardtwo/">Back to dashboard</a
+            >
+            <span>/</span>
+            <span class="font-bold">{entityName + ' Entity'} </span>
+        </div>
+        <!-- breadcrumb  -->
+
+        <!-- tabs  -->
+
+        <nav class="flex items-center w-full">
+            <a
+                href={getUrl(rootPath)}
+                class={pathname === rootPath
+                    ? activeTabStyles
+                    : defaultTabStyle}>Tab 1</a
+            >
+
+            <a
+                href={getUrl(`${rootPath}tabtwo/`)}
+                class={pathname.includes('/tabtwo/')
+                    ? activeTabStyles
+                    : defaultTabStyle}>Tab 2</a
+            >
+
+            <a
+                href={getUrl(`${rootPath}tabthree/`)}
+                class={pathname.includes('/tabthree/')
+                    ? activeTabStyles
+                    : defaultTabStyle}>Tab 3</a
+            >
+        </nav>
+        <!-- tabs  -->
+    </div>
 </div>
 
-<nav class="flex items-start border-b px-6 pt-6 border-emerald-600">
-    <a
-        href={getUrl(rootPath)}
-        class={pathname === rootPath ? activeTabStyles : defaultTabStyle}
-        >Tab 1</a
-    >
-
-    <a
-        href={getUrl(`${rootPath}tabtwo/`)}
-        class={pathname.includes('/tabtwo/')
-            ? activeTabStyles
-            : defaultTabStyle}>Tab 2</a
-    >
-
-    <a
-        href={getUrl(`${rootPath}tabthree/`)}
-        class={pathname.includes('/tabthree/')
-            ? activeTabStyles
-            : defaultTabStyle}>Tab 3</a
-    >
-</nav>
-
-<main class="p-6">
-    {@render children()}
-</main>
+{@render children()}

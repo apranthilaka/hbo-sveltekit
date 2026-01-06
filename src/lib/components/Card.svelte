@@ -29,13 +29,13 @@
     class="card {entityTypeClass} hover:border-neutral-300 transition-border -mr-px -mb-px hover:shadow-xl transition-shadow duration-300 shadow-sm border border-gray-300"
 >
     <!-- card heading  -->
-    <div class="group card_heading font-medium text-base">
+    <div class="group card_heading font-medium text-base pt-1 pb-1">
         <a
-            class="group-hover:underline flex items-center justify-start pl-6 rp-6 pt-1 pb-1"
+            class="group-hover:underline flex items-center justify-start pl-3 rp-6 pt-1 pb-1 gap-3"
             href={titleLink}
         >
             <div
-                class="group-hover:no-underline card_heading_icon w-10 h-10 flex items-center justify-center rounded-full"
+                class="group-hover:no-underline card_heading_icon w-8 h-8 flex items-center justify-center rounded-full font-normal text-xs shadow-lg"
             >
                 {iconText}
             </div>
@@ -126,8 +126,6 @@
         }
         .card_heading_icon {
             background-color: #dffbe5;
-            width: 40px;
-            height: 40px;
         }
         transition: all 0.5s;
 
@@ -139,8 +137,6 @@
             }
             .card_heading_icon {
                 background-color: #85f09c;
-                width: 40px;
-                height: 40px;
             }
         }
     }
@@ -151,8 +147,6 @@
         }
         .card_heading_icon {
             background-color: #fbf5df;
-            width: 40px;
-            height: 40px;
         }
         transition: all 0.5s;
 
@@ -164,8 +158,6 @@
             }
             .card_heading_icon {
                 background-color: #f1dc8e;
-                width: 40px;
-                height: 40px;
             }
         }
     }
@@ -176,8 +168,6 @@
         }
         .card_heading_icon {
             background-color: #f8edfd;
-            width: 40px;
-            height: 40px;
         }
         transition: all 0.5s;
 
@@ -189,8 +179,6 @@
             }
             .card_heading_icon {
                 background-color: #dda8f5;
-                width: 40px;
-                height: 40px;
             }
         }
     }
@@ -200,8 +188,6 @@
         }
         .card_heading_icon {
             background-color: #edfafd;
-            width: 40px;
-            height: 40px;
         }
         transition: all 0.5s;
 
@@ -213,8 +199,6 @@
             }
             .card_heading_icon {
                 background-color: #aee9f4;
-                width: 40px;
-                height: 40px;
             }
         }
     }

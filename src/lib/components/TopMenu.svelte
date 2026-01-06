@@ -2,7 +2,7 @@
     import { base } from '$app/paths';
 </script>
 
-<div class="top-menu border-b border-neutral-300">
+<div class="top-menu bg-white border-b border-neutral-300">
     <div class="left">
         <div>
             <div class="system-status">
