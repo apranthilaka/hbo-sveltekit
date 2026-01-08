@@ -77,7 +77,7 @@
     <nav>
         {#each menuItems as item}
             <a
-                class=" text-neutral-500 pl-3 pr-3 gap-3 hover:border border-neutral-500 transiti delay-75 rounded-sm {isMenuOpen
+                class=" text-sm text-neutral-500 pl-3 pr-3 gap-3 hover:bg-gray-100 hover:shadow-md transiti delay-75 rounded-sm {isMenuOpen
                     ? 'flex item-center justify-start  h-10  '
                     : ' pl-0 pr-0 flex item-center justify-center  w-10 h-10 font-bold'}"
                 href="{base}{item.path}"
@@ -108,7 +108,7 @@
             display: flex;
             flex-direction: column;
             padding: 1rem;
-            gap: 0.5rem;
+            gap: 4px;
         }
 
         a {
@@ -121,11 +121,13 @@
 
         /* 2. Style your active link here */
         a.active {
-            background-color: rgb(0, 0, 0);
+            background-color: oklch(96.7% 0.003 264.542);
             color: hsla(158, 50%, 40%, 1);
             font-weight: medium;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-            color: white;
+            box-shadow:
+                rgba(9, 30, 66, 0.25) 0px 1px 1px,
+                rgba(9, 30, 66, 0.13) 0px 0px 1px 1px;
+            color: rgb(0, 0, 0);
             border-radius: 4px;
         }
     }

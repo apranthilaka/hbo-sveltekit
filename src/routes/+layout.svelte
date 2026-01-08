@@ -8,6 +8,7 @@
     let { children } = $props();
 
     import { onNavigate } from '$app/navigation';
+    import LeftMenuTwo from '$lib/components/LeftMenuTwo.svelte';
 
     //     navigation animation
     onNavigate((navigation) => {
@@ -23,9 +24,10 @@
     //     navigation animation
 </script>
 
-<div class="root-layout bg-neutral-100">
+<div class="root-layout bg-gray-50">
     <TopMenu />
     <LeftMenu />
+    <!-- <LeftMenuTwo /> -->
 
     <main class="content-area w-full flex items-center justify-start">
         {@render children()}

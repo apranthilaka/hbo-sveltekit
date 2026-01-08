@@ -3,59 +3,6 @@
 </script>
 
 <!-- Card Section -->
-
-<div class=" h-20 flex items-center">
-    <!-- <h2 class="sr-only">Steps</h2> -->
-
-    <div
-        class="  relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gray-200 w-full"
-    >
-        <ol
-            class="relative z-10 flex justify-between text-sm font-medium text-gray-600"
-        >
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    1
-                </span>
-
-                <span class="hidden sm:block"> Details </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-blue-500 text-center text-[10px]/6 font-bold text-white"
-                >
-                    2
-                </span>
-
-                <span class="hidden sm:block"> Address </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    3
-                </span>
-
-                <span class="hidden sm:block"> Payment </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    4
-                </span>
-
-                <span class="hidden sm:block"> Complete </span>
-            </li>
-        </ol>
-    </div>
-</div>
-
 <div class="w-full shadow-md border border-gray-200 rounded-md">
     <!-- Card -->
     <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
