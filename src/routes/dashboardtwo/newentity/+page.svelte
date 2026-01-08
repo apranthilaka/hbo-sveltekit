@@ -4,7 +4,7 @@
 
 <!-- Card Section -->
 
-<div class=" h-20 flex items-center">
+<div class=" min-h-20 flex items-center">
     <!-- <h2 class="sr-only">Steps</h2> -->
 
     <div
@@ -81,7 +81,7 @@
                 </label>
 
                 <div
-                    class="mt-2 space-y-3 gap-3 overflow-hidden grid grid-cols-[repeat(auto-fit,minmax(500px,1fr))]"
+                    class="mt-2 space-y-3 gap-3 overflow-hidden p-1 grid grid-cols-[repeat(auto-fit,minmax(500px,1fr))]"
                 >
                     <input
                         id="af-payment-billing-contact"

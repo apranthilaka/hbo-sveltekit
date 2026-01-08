@@ -41,7 +41,7 @@
         { title: 'Meteor Media', typeClass: 'card--me' },
     ];
 
-    let isExpand = $state(false);
+    let isExpand = $state(true);
 
     function expandDiv() {
         isExpand = !isExpand;
@@ -96,7 +96,7 @@
     </div>
     <!-- title wrapper  -->
 
-    <div class="card-container card-container_cards w-full flex-1">
+    <div class="card-container card-container_cards w-full flex-1 p-1">
         {#each entities as entity}
             <Card
                 entityTypeClass={entity.typeClass}
