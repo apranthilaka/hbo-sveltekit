@@ -32,17 +32,17 @@
         <!-- breadcrumb  -->
         <div class="  flex items-center justify-start gap-2 w-full min-h-20">
             <a
-                class="text-neutral-400 hover:underline"
+                class="text-gray-500 hover:underline text-sm"
                 href="{base}/dashboardtwo/">Back to dashboard</a
             >
             <span>/</span>
-            <span class="font-bold">{entityName + ' Entity'} </span>
+            <span class="font-medium text-sm">{entityName + ' Entity'} </span>
         </div>
         <!-- breadcrumb  -->
 
         <!-- tabs  -->
 
-        <nav class="flex items-center w-full">
+        <nav class="flex items-center w-full text-sm">
             <a
                 href={getUrl(rootPath)}
                 class={pathname === rootPath

@@ -26,12 +26,14 @@
     class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl flex overflow-hidden flex-col h-screen mb-6"
 >
     <!-- breadcrumb  -->
-    <div class="  flex items-center justify-start gap-2 w-full min-h-20">
-        <a class="text-neutral-400 hover:underline" href="{base}/dashboardtwo/"
+    <div
+        class="  flex items-center justify-start gap-2 w-full min-h-20 text-sm"
+    >
+        <a class="text-gray-500 hover:underline" href="{base}/dashboardtwo/"
             >Back to dashboard</a
         >
         <span>/</span>
-        <span class="font-bold">{'Create New ' + entityName} </span>
+        <span class="font-medium">{'Create New ' + entityName} </span>
     </div>
     <!-- breadcrumb  -->
 

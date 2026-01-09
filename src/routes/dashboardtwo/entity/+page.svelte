@@ -16,7 +16,7 @@
 </script>
 
 <div
-    class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl gap-6 flex overflow-hidden flex-col h-screen mb-6 mt-6"
+    class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl gap-6 flex flex-col h-screen mb-6 mt-6 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-lg"
 >
     <!-- stepper  -->
     <!-- stepper  -->
@@ -26,9 +26,7 @@
                 <!-- Card -->
                 <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
                     <div class="mb-8">
-                        <h2
-                            class="text-2xl md:text-2xl font-bold text-gray-800"
-                        >
+                        <h2 class="text-2xl md:text-xl font-bold text-gray-800">
                             Entity Details
                         </h2>
                         <p class="text-sm text-gray-600">
@@ -165,7 +163,7 @@
                         <!-- End Section -->
                     </form>
 
-                    <div
+                    <!-- <div
                         class="mt-5 flex justify-between gap-x-2 border-t border-gray-200 pt-6"
                     >
                         <button
@@ -182,7 +180,7 @@
                         >
                             Step 2
                         </a>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- End Card -->
             </div>
@@ -191,9 +189,7 @@
                 <!-- Card -->
                 <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
                     <div class="mb-8">
-                        <h2
-                            class="text-2xl md:text-2xl font-bold text-gray-800"
-                        >
+                        <h2 class="text-2xl md:text-xl font-bold text-gray-800">
                             Entity Status
                         </h2>
                         <p class="text-sm text-gray-600">
