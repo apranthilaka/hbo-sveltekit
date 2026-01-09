@@ -3,7 +3,9 @@
 </script>
 
 <!-- Card Section -->
-<div class="w-full shadow-md border border-gray-200 rounded-md">
+<div
+    class="w-full shadow-md border border-gray-200 rounded-md overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+>
     <!-- Card -->
     <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
         <div class="mb-8">
@@ -143,25 +145,22 @@
             </div>
             <!-- End Section -->
         </form>
-
-        <div
-            class="mt-5 flex justify-between gap-x-2 border-t border-gray-200 pt-6"
-        >
-            <button
-                type="button"
-                class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-            >
-                Cancel
-            </button>
-            <a
-                href="{base}/dashboardtwo/newentity/formfour?step=stepfour"
-                type="button"
-                class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-900 text-white hover:bg-gray-950 focus:outline-hidden focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
-            >
-                Step 4
-            </a>
-        </div>
     </div>
     <!-- End Card -->
+</div>
+<div class="mt-5 flex justify-between gap-x-2 border-t border-gray-200 pt-6">
+    <button
+        type="button"
+        class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
+    >
+        Cancel
+    </button>
+    <a
+        href="{base}/dashboardtwo/newentity/formfour?step=stepfour"
+        type="button"
+        class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-900 text-white hover:bg-gray-950 focus:outline-hidden focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
+    >
+        Step 4
+    </a>
 </div>
 <!-- End Card Section -->

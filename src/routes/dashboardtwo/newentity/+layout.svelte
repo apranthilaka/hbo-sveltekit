@@ -26,7 +26,7 @@
     class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl flex overflow-hidden flex-col h-screen mb-6"
 >
     <!-- breadcrumb  -->
-    <div class="  flex items-center justify-start gap-2 w-full h-20 min-h-20">
+    <div class="  flex items-center justify-start gap-2 w-full min-h-20">
         <a class="text-neutral-400 hover:underline" href="{base}/dashboardtwo/"
             >Back to dashboard</a
         >
@@ -36,7 +36,7 @@
     <!-- breadcrumb  -->
 
     <!-- stepper  -->
-    <div class=" min-h-20 flex items-center">
+    <div class=" h-auto mb-6 flex items-start">
         <!-- <h2 class="sr-only">Steps</h2> -->
 
         <div
@@ -47,9 +47,10 @@
             >
                 <li class="flex items-center gap-2 bg-white p-2">
                     <span
-                        class="size-6 rounded-full {step === 'stepone'
-                            ? 'bg-blue-500 text-center'
-                            : 'bg-gray-100'} text-[10px]/6 font-bold text-white"
+                        class="size-6 rounded-full flex items-center justify-center {step ===
+                        'stepone'
+                            ? 'bg-blue-500 text-center text-white'
+                            : 'bg-gray-200'} text-[10px]/6 font-bold text-gray-500"
                     >
                         1
                     </span>
@@ -59,9 +60,10 @@
 
                 <li class="flex items-center gap-2 bg-white p-2">
                     <span
-                        class="size-6 rounded-full {step === 'steptwo'
-                            ? 'bg-blue-500 text-center'
-                            : 'bg-gray-100'} text-[10px]/6 font-bold text-white"
+                        class="size-6 rounded-full flex items-center justify-center {step ===
+                        'steptwo'
+                            ? 'bg-blue-500 text-center text-white'
+                            : 'bg-gray-200'} text-[10px]/6 font-bold text-gray-500"
                     >
                         2
                     </span>
@@ -71,9 +73,10 @@
 
                 <li class="flex items-center gap-2 bg-white p-2">
                     <span
-                        class="size-6 rounded-full {step === 'stepthree'
-                            ? 'bg-blue-500 text-center'
-                            : 'bg-gray-100'} text-[10px]/6 font-bold text-white"
+                        class="size-6 rounded-full flex items-center justify-center {step ===
+                        'stepthree'
+                            ? 'bg-blue-500 text-center text-white'
+                            : 'bg-gray-200'} text-[10px]/6 font-bold text-gray-500"
                     >
                         3
                     </span>
@@ -85,7 +88,7 @@
                     <span
                         class="size-6 rounded-full {step === 'stepfour'
                             ? 'bg-blue-500 text-center'
-                            : 'bg-gray-100'} text-[10px]/6 font-bold text-white"
+                            : 'bg-gray-200'} text-[10px]/6 font-bold text-white"
                     >
                         4
                     </span>
