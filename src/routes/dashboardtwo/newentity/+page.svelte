@@ -1,60 +1,9 @@
 <script>
     import { base } from '$app/paths';
+    import { page } from '$app/state';
 </script>
 
 <!-- Card Section -->
-
-<div class=" min-h-20 flex items-center">
-    <!-- <h2 class="sr-only">Steps</h2> -->
-
-    <div
-        class="  relative after:absolute after:inset-x-0 after:top-1/2 after:block after:h-0.5 after:-translate-y-1/2 after:rounded-lg after:bg-gray-200 w-full"
-    >
-        <ol
-            class="relative z-10 flex justify-between text-sm font-medium text-gray-600"
-        >
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    1
-                </span>
-
-                <span class="hidden sm:block"> Details </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-blue-500 text-center text-[10px]/6 font-bold text-white"
-                >
-                    2
-                </span>
-
-                <span class="hidden sm:block"> Address </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    3
-                </span>
-
-                <span class="hidden sm:block"> Payment </span>
-            </li>
-
-            <li class="flex items-center gap-2 bg-white p-2">
-                <span
-                    class="size-6 rounded-full bg-gray-100 text-center text-[10px]/6 font-bold"
-                >
-                    4
-                </span>
-
-                <span class="hidden sm:block"> Complete </span>
-            </li>
-        </ol>
-    </div>
-</div>
 
 <div class="w-full shadow-md border border-gray-200 rounded-md">
     <!-- Card -->
@@ -207,11 +156,11 @@
                 Cancel
             </button>
             <a
-                href="{base}/dashboardtwo/newentity/formtwo"
+                href="{base}/dashboardtwo/newentity/formtwo?step=steptwo"
                 type="button"
                 class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-900 text-white hover:bg-gray-950 focus:outline-hidden focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
             >
-                Save changes
+                Step 2
             </a>
         </div>
     </div>

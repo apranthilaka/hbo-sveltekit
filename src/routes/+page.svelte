@@ -69,7 +69,7 @@
 
 <!-- responsive wrapper  -->
 <div
-    class="  border border-green-600 flex flex-col responsive-wrapper w-full h-screen mb-6 overflow-hidden transition-all duration-500 ease-in-out
+    class="  flex flex-col responsive-wrapper w-full h-screen mb-6 overflow-hidden transition-all duration-500 ease-in-out
     {isExpand
         ? 'max-w-full px-6'
         : 'max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl px-0'}"
@@ -101,7 +101,7 @@
     <!-- heading  -->
 
     <div
-        class="border border-red-600 flex flex-col grow overflow-auto h-full overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+        class=" flex flex-col grow overflow-auto h-full overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
     >
         <!-- Card Section -->
         <div class=" py-10 pt-0">
