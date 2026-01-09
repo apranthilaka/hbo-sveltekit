@@ -4,7 +4,7 @@
 
     // 1. DATA FOR THE CARDS
     const entities = [
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
+        { title: 'Nebula Nexus', typeClass: 'card--gp', entity: 'entitygp' },
         { title: 'Solaris Systems', typeClass: 'card--lp' },
         { title: 'Luna Logistics', typeClass: 'card--cp' },
         { title: 'Meteor Media', typeClass: 'card--me' },
@@ -66,9 +66,11 @@
                 name="location"
                 class="min-w-[250px] block w-full rounded-md border-gray-300 py-2 pl-3 pr-10 text-base focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
             >
-                <option>United States</option>
-                <option selected>Canada</option>
-                <option>Mexico</option>
+                <option selected>All Entities (Except Master Entities)</option>
+                <option>All Master Entities</option>
+                <option>All GPs</option>
+                <option>All LPs</option>
+                <option>My All (Entities + Master Entities)</option>
             </select>
 
             <!-- dropdown  -->

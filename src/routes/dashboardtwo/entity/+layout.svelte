@@ -20,7 +20,7 @@
     let activeTabStyles =
         'text-neutral-900 pl-6 pr-6   border-emerald-200 rounded-t-sm h-[40px] flex items-center justify-center bg-emerald-50 bg-neutral-900 text-white';
     let defaultTabStyle =
-        'text-neutral-700 pl-6 pr-6  border border-neutral-300 rounded-t-sm h-[40px] flex items-center justify-center hover:bg-red-100 transition-all duration-400';
+        'text-neutral-700 pl-6 pr-6  border border-neutral-300 rounded-t-sm h-[40px] flex items-center justify-center hover:bg-gray-100 transition-all duration-400';
 </script>
 
 <div
@@ -47,22 +47,26 @@
                 href={getUrl(rootPath)}
                 class={pathname === rootPath
                     ? activeTabStyles
-                    : defaultTabStyle}>Tab 1</a
+                    : defaultTabStyle}>Entity Details</a
             >
 
             <a
                 href={getUrl(`${rootPath}tabtwo/`)}
                 class={pathname.includes('/tabtwo/')
                     ? activeTabStyles
-                    : defaultTabStyle}>Tab 2</a
+                    : defaultTabStyle}>Portfolio Management</a
             >
 
             <a
                 href={getUrl(`${rootPath}tabthree/`)}
                 class={pathname.includes('/tabthree/')
                     ? activeTabStyles
-                    : defaultTabStyle}>Tab 3</a
+                    : defaultTabStyle}>Blueprints</a
             >
+            <a href="#" class={defaultTabStyle}>Data Requests</a>
+            <a href="#" class={defaultTabStyle}>Settings</a>
+            <a href="#" class={defaultTabStyle}>Documents</a>
+            <a href="#" class={defaultTabStyle}>Notes</a>
         </nav>
         <!-- tabs  -->
     </div>
