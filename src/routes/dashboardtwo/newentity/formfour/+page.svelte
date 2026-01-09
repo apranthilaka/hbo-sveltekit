@@ -10,7 +10,7 @@
         <i class="ph ph-cloud-check"></i>
     </div> -->
     <div>
-        <img class="w-fill h-50" src="/check.gif" alt="" />
+        <img class="w-fill h-50" src="{base}/check.gif" alt="" />
     </div>
     <div class="text-nd text-gray-800 font-medium mt-4">
         Entity sucessfully created
