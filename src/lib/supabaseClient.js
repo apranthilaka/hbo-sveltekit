@@ -1,10 +1,8 @@
 import { createClient } from '@supabase/supabase-js';
-import {
-    PUBLIC_SUPABASE_URL,
-    PUBLIC_SUPABASE_ANON_KEY,
-} from '$env/static/public';
+import { env } from '$env/dynamic/public';
 
+// This allows the app to check for the keys at runtime
 export const supabase = createClient(
-    PUBLIC_SUPABASE_URL,
-    PUBLIC_SUPABASE_ANON_KEY
+    env.PUBLIC_SUPABASE_URL,
+    env.PUBLIC_SUPABASE_ANON_KEY
 );
