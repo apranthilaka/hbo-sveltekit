@@ -159,14 +159,14 @@
 
             <!-- dropdown  -->
 
-            <!-- new entity  -->
+            <!-- new entitygp  -->
             <a
                 href="{base}/dashboardtwo/newentity"
                 class="bg-emerald-600 hover:bg-emerald-400 hover:cursor-pointer transition duration-300 ease-in-out ... text-white py-2 px-4 rounded min-w-[100px] h-[36px] flex justify-center items-center text-sm"
             >
                 New Entity
             </a>
-            <!-- new entity  -->
+            <!-- new entitygp  -->
             {#if isExpand === false}
                 <button
                     title="asd"
@@ -360,7 +360,7 @@
                 <Card
                     entityTypeClass={entity.type_class}
                     title={entity.title}
-                    titleLink="{base}/dashboardtwo/entity?name={encodeURIComponent(
+                    titleLink="{base}/dashboardtwo/{entity.entitytype}?name={encodeURIComponent(
                         entity.title
                     )}"
                 />

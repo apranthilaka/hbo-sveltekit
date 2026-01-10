@@ -34,7 +34,7 @@
         }
 
         // 2. For other paths, check if the current URL starts with the menu path
-        // This keeps 'Dashboard two' active when you are at '/dashboardtwo/entity'
+        // This keeps 'Dashboard two' active when you are at '/dashboardtwo/entitygp'
         return currentPath.startsWith(fullPath);
     };
 </script>
