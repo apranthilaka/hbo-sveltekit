@@ -1,48 +1,34 @@
 <script>
     import { base } from '$app/paths';
     import Card from '$lib/components/Card.svelte';
+    import { supabase } from '$lib/supabaseClient'; // Import the client you created earlier
 
-    // 1. DATA FOR THE CARDS
-    const entities = [
-        { title: 'Nebula Nexus', typeClass: 'card--gp', entity: 'entitygp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-        { title: 'Nebula Nexus', typeClass: 'card--gp' },
-        { title: 'Solaris Systems', typeClass: 'card--lp' },
-        { title: 'Luna Logistics', typeClass: 'card--cp' },
-        { title: 'Meteor Media', typeClass: 'card--me' },
-    ];
+    // 1. REPLACING STATIC DATA WITH RUNES
+    let entities = $state([]);
+    let isLoading = $state(true);
+    let errorMsg = $state(null);
+
+    // 2. FETCH FUNCTION
+    async function fetchEntities() {
+        isLoading = true;
+        const { data, error } = await supabase
+            .from('entities') // Your Supabase table name
+            .select('*');
+
+        if (error) {
+            errorMsg = error.message;
+        } else {
+            entities = data;
+        }
+        isLoading = false;
+    }
+
+    // 3. TRIGGER ON MOUNT
+    $effect(() => {
+        fetchEntities();
+    });
 
     let isExpand = $state(true);
-
     function expandDiv() {
         isExpand = !isExpand;
     }
@@ -356,15 +342,30 @@
     <!-- End Card Section -->
 
     <div class="card-container card-container_cards w-full flex-1 p-1">
-        {#each entities as entity}
-            <Card
-                entityTypeClass={entity.typeClass}
-                title={entity.title}
-                titleLink="{base}/dashboardtwo/entity?name={encodeURIComponent(
-                    entity.title
-                )}"
-            />
-        {/each}
+        {#if isLoading}
+            {#each Array(30) as _}
+                <div
+                    class="animate-pulse bg-gray-200 border border-gray-200 rounded-xl h-32 w-full"
+                >
+                    <div class="p-5 space-y-3">
+                        <div class="h-4 bg-gray-300 rounded w-1/4"></div>
+                        <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+                    </div>
+                </div>
+            {/each}
+        {:else if errorMsg}
+            <div class="p-4 bg-red-50 text-red-700 rounded-lg">{errorMsg}</div>
+        {:else}
+            {#each entities as entity}
+                <Card
+                    entityTypeClass={entity.type_class}
+                    title={entity.title}
+                    titleLink="{base}/dashboardtwo/entity?name={encodeURIComponent(
+                        entity.title
+                    )}"
+                />
+            {/each}
+        {/if}
     </div>
 </div>
 
