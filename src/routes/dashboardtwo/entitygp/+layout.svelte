@@ -10,7 +10,7 @@
     // Standardize pathname for active link checking
     let pathname = $derived(page.url.pathname);
 
-    const rootPath = `${base}/dashboardtwo/entity/`;
+    const rootPath = `${base}/dashboardtwo/entitygp/`;
 
     // Helper to keep the name in the URL when switching pages
     function getUrl(path) {
