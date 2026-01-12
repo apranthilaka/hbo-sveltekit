@@ -172,7 +172,7 @@
                     >
                 </span>
                 <h3 class="mb-2 text-2xl font-bold text-gray-800">
-                    Your Feedbacks are really imporant, Thank You!
+                    Thank You!
                 </h3>
                 <p class="text-gray-500 text-sm">
                     Your feedback has been submitted successfully.
