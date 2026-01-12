@@ -11,7 +11,8 @@
         GP Portfolio Managemnent
         <a
             class="border border-gray-300 h-10 px-6 flex items-center justify-center rounded-md hover:bg-gray-200"
-            href="{base}/dashboardtwo/entitygp/gpinvestment">GP Investment</a
+            href="{base}/dashboardtwo/gpinvestment?name=Investment"
+            >GP Investment</a
         >
     </div>
 </div>
