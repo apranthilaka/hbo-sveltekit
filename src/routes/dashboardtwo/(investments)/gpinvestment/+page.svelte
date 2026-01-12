@@ -1,4 +1,6 @@
 <script lang="ts">
+    import { base } from '$app/paths';
+
     let {
         items = [
             { id: 1, name: 'Wade Cooper' },
@@ -37,6 +39,23 @@
 >
     <div class=" rounded-xl">
         <form class="flex gap-6 flex-col">
+            <div
+                class="py-6 border border-gray-300 rounded-lg p-6 bg-white flex items-center justify-between"
+            >
+                <div>
+                    <img
+                        class="w-[150px] h-auto"
+                        src="{base}/gpinvestmentlogo.png"
+                        alt=""
+                    />
+                </div>
+                <div>
+                    <a
+                        class="text-sm border border-gray-300 rounded-sm px-6 h-9 block flex items-center justify-center"
+                        href="">Change Logo</a
+                    >
+                </div>
+            </div>
             <!-- Section -->
             <div class="py-6 border border-gray-300 rounded-lg p-6 bg-white">
                 <label
