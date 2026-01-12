@@ -6,9 +6,6 @@
 <div
     class=" w-full flex items-center justify-start flex-col h-[700px] rounded-lg pt-25"
 >
-    <!-- <div class="text-[80px]">
-        <i class="ph ph-cloud-check"></i>
-    </div> -->
     <div>
         <img class="w-fill h-50" src="{base}/check.gif" alt="" />
     </div>

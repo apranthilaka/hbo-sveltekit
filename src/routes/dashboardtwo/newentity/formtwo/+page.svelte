@@ -8,13 +8,8 @@
 >
     <!-- Card -->
     <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
-        <div class="mb-8">
-            <h2 class="text-2xl md:text-2xl font-bold text-gray-800">
-                Create New entity
-            </h2>
-            <p class="text-sm text-gray-600">
-                Create new entity form description goes here
-            </p>
+        <div class="mb-6 border-b border-gray-300 pb-6">
+            <h2 class="text-lg font-medium text-gray-800">Create New entity</h2>
         </div>
 
         <form>
@@ -148,7 +143,7 @@
     </div>
     <!-- End Card -->
 </div>
-<div class="mt-5 flex justify-between gap-x-2 border-t border-gray-200 pt-6">
+<div class="flex justify-between gap-x-2 pt-6">
     <button
         type="button"
         class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"

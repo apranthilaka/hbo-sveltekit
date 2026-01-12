@@ -20,6 +20,11 @@
             path: '/settings',
             icon: '<i class="ph-fill ph-gear"></i>',
         },
+        {
+            name: 'Admin',
+            path: '/admin',
+            icon: '<i class="ph-fill ph-gear"></i>',
+        },
     ];
 
     /** * Helper function to check if a link is active.

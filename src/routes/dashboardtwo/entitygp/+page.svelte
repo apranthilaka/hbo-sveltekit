@@ -1,4 +1,6 @@
 <script>
+    import { base } from '$app/paths';
+
     let activeStep = $state(1);
     function next() {
         if (activeStep === 2) {
@@ -14,6 +16,8 @@
         activeStep -= 1;
     }
 </script>
+
+<div></div>
 
 <div
     class=" responsive-wrapper w-full max-w-full md:max-w-3xl lg:max-w-4xl xl:max-w-6xl gap-6 flex flex-col h-screen mb-6 mt-6 overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden rounded-lg"

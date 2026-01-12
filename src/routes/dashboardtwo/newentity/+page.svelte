@@ -6,17 +6,12 @@
 <!-- Card Section -->
 
 <div
-    class="w-full shadow-md border border-gray-300 rounded-md overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden"
+    class=" p-6 w-full border border-gray-300 rounded-lg overflow-y-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden bg-white"
 >
     <!-- Card -->
-    <div class="bg-white rounded-xl shadow-xs p-4 sm:p-7">
-        <div class="mb-8">
-            <h2 class="text-2xl md:text-2xl font-bold text-gray-800">
-                Create New entity
-            </h2>
-            <p class="text-sm text-gray-600">
-                Create new entity form description goes here
-            </p>
+    <div class="bg-white rounded-xl">
+        <div class="mb-6 border-b border-gray-300 pb-6">
+            <h2 class="text-lg font-medium text-gray-800">Create New entity</h2>
         </div>
 
         <form>
@@ -32,7 +27,7 @@
                 </label>
 
                 <div
-                    class="mt-2 space-y-3 gap-3 overflow-hidden p-1 grid grid-cols-[repeat(auto-fit,minmax(500px,1fr))]"
+                    class="mt-2 space-y-3 gap-3 overflow-hidden grid grid-cols-[repeat(auto-fit,minmax(500px,1fr))]"
                 >
                     <input
                         id="af-payment-billing-contact"
@@ -147,24 +142,6 @@
             </div>
             <!-- End Section -->
         </form>
-
-        <!-- <div
-            class="mt-5 flex justify-between gap-x-2 border-t border-gray-200 pt-6"
-        >
-            <button
-                type="button"
-                class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-gray-200 bg-white text-gray-800 shadow-2xs hover:bg-gray-50 focus:outline-hidden focus:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none"
-            >
-                Cancel
-            </button>
-            <a
-                href="{base}/dashboardtwo/newentity/formtwo?step=steptwo"
-                type="button"
-                class="py-1.5 sm:py-2 px-3 inline-flex items-center gap-x-2 text-sm font-medium rounded-lg border border-transparent bg-gray-900 text-white hover:bg-gray-950 focus:outline-hidden focus:bg-gray-700 disabled:opacity-50 disabled:pointer-events-none"
-            >
-                Step 2
-            </a>
-        </div> -->
     </div>
     <!-- End Card -->
 </div>
