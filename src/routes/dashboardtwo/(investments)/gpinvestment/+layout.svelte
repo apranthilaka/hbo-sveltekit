@@ -5,7 +5,7 @@
     let { children } = $props();
 
     // 1. Derive current URL info
-    let entityName = $derived(page.url.searchParams.get('name') || 'Entity');
+    let entityName = $derived(page.url.searchParams.get('entityName') || 'gp');
     let pathname = $derived(page.url.pathname);
 
     // 2. Define absolute paths to prevent "broken" links
@@ -22,6 +22,12 @@
         return `${cleanPath}?name=${encodeURIComponent(entityName)}`;
     }
 
+    function goBack(path) {
+        // Ensure we don't end up with double slashes //
+        const cleanPath = path.endsWith('/') ? path : `${path}/`;
+        return `${cleanPath}?entityName=${encodeURIComponent(entityName)}`;
+    }
+
     let activeTabStyles =
         'text-neutral-900 pl-6 pr-6 border-emerald-200 rounded-t-sm h-[40px] flex items-center justify-center bg-emerald-50 bg-neutral-900 text-white';
     let defaultTabStyle =
@@ -36,14 +42,13 @@
     >
         <div class="flex items-center justify-start gap-2 w-full min-h-20">
             <a
-                href={getUrl(gpHome)}
+                href={goBack(gpHome)}
                 class="text-gray-500 hover:underline text-sm"
             >
                 Back to GP
             </a>
             <span>/</span>
-            <span class="font-medium text-sm">{entityName + ' Investment'}</span
-            >
+            <span class="font-medium text-sm">ABC investment </span>
         </div>
 
         <nav class="flex items-center w-full text-sm">

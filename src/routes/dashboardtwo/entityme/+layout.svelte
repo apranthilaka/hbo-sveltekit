@@ -5,7 +5,9 @@
     let { children } = $props();
 
     // Derive name for breadcrumb
-    let entityName = $derived(page.url.searchParams.get('name') || 'Entity');
+    let entityName = $derived(
+        page.url.searchParams.get('entityName') || 'Entity'
+    );
 
     // Standardize pathname for active link checking
     let pathname = $derived(page.url.pathname);
@@ -14,7 +16,7 @@
 
     // Helper to keep the name in the URL when switching pages
     function getUrl(path) {
-        return `${path}?name=${encodeURIComponent(entityName)}`;
+        return `${path}?entityName=${encodeURIComponent(entityName)}`;
     }
 
     let activeTabStyles =

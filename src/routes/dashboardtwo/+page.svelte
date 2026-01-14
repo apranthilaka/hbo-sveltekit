@@ -360,7 +360,7 @@
                 <Card
                     entityTypeClass={entity.type_class}
                     title={entity.title}
-                    titleLink="{base}/dashboardtwo/{entity.entitytype}?name={encodeURIComponent(
+                    titleLink="{base}/dashboardtwo/{entity.entitytype}?entityName={encodeURIComponent(
                         entity.title
                     )}"
                 />
