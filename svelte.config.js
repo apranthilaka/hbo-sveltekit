@@ -14,8 +14,8 @@ const config = {
             fallback: '404.html',
         }),
         paths: {
-            // Only use the repo name in production
-            base: dev ? '' : '/hbo-sveltekit',
+            base: process.env.NODE_ENV === 'production' ? '/hbo-sveltekit' : '',
+            relative: false, // <--- ADD THIS LINE
         },
     },
 };
