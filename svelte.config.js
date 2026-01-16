@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-static';
+import adapter from '@sveltejs/adapter-cloudflare';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -6,18 +6,13 @@ const config = {
     preprocess: vitePreprocess(),
 
     kit: {
-        // adapter-static is required for GitHub Pages
-        adapter: adapter({
-            pages: 'build',
-            assets: 'build',
-            fallback: '404.html', // Allows for SPA-like routing on GitHub
-            precompress: false,
-            strict: true,
-        }),
+        // Cloudflare adapter requires zero config for basic SSR
+        adapter: adapter(),
+
+        // Removed 'paths' because Cloudflare typically hosts
+        // at the root of the domain/subdomain.
         paths: {
-            // Replace 'your-repo-name' with your actual repository name
-            // If you are using a custom domain (e.g. www.example.com), set this to ''
-            base: process.argv.includes('dev') ? '' : '/hbo-sveltekit',
+            base: '',
         },
     },
 };
