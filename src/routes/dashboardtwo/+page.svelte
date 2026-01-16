@@ -55,7 +55,7 @@
                 <option selected>All Entities (Except Master Entities)</option>
                 <option>All Master Entities</option>
                 <option>All GPs</option>
-                <option>All LPs</option>
+                <option>All LPs lit</option>
                 <option>My All (Entities + Master Entities)</option>
             </select>
 
